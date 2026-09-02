@@ -1,0 +1,5 @@
+# Real project data never enters this repo. Only synthetic fixtures under .kiro/specs/*/fixtures/.
+data/
+*.log
+.kiro/settings/permissions.yaml
+.kiro/workspace-roots/

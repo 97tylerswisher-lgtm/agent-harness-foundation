@@ -1,0 +1,19 @@
+# One term per line. check-redaction.ps1 fails on any hit outside this file.
+# Public extraction list. At work, replace with the site list (program names, part numbers, project codes).
+ad_app_2
+S:\
+S:/
+C:\Users
+Kenzie
+Etsy
+etsy
+Printify
+Fal.ai
+fal.ai
+Higgsfield
+Swisher Suites
+SwisherSuites
+gmail.com
+Nano Banana
+firecrawl
+perplexity
