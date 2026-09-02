@@ -17,8 +17,10 @@ operator can approve one phase at a time.
 
 ## The output
 
-One folder per job at `.kiro/specs/<kebab-name>/`. The name is lowercase words joined by
-hyphens and names the job, not the tool (`weekly-report-from-export`, not `matlab-script`).
+One folder per job at `.kiro/specs/<kebab-name>/`. The name is `<input>-to-<output>`:
+kebab-case, lowercase letters, digits, and hyphens only, built from the operator's own nouns
+for what goes in and what comes out. A job with intermediate stages chains them with `-to-`
+(`text-to-vba-to-matlab-to-pdf`). Name the data path, not the tool.
 
 | File | What it holds | Skeleton |
 | --- | --- | --- |
@@ -28,6 +30,7 @@ hyphens and names the job, not the tool (`weekly-report-from-export`, not `matla
 | `tasks.md` | A checkbox list; every task cites requirement numbers | `references/tasks-skeleton.md` |
 | `cards/`, `fixtures/` | The data-distillation artifacts, if the job touches data | see `data-distillation` |
 | `references/` | Optional. Research findings the spec depends on, one `<topic>.md` per finding | see `self-learning-research` |
+| `stubs/` | Optional. Stand-ins for existing scripts the runner calls, so the runner can be dry-run without them. Each stub folder carries a README that says what it stands in for | none |
 
 ## Rules
 

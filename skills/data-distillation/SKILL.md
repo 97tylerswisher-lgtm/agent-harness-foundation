@@ -23,7 +23,9 @@ The rule lives in `steering/40-data-boundary.md`. This skill is the procedure. T
 ## The four cards
 
 Only these four artifacts describe the data inside the IDE. Nothing else about the data
-enters.
+enters. A stub is not a card: it is an optional stand-in for an existing script the runner
+calls, kept under `.kiro/specs/<name>/stubs/`, so the runner can be dry-run without the real
+script.
 
 | Card | What it contains | Who makes it | Template |
 | --- | --- | --- | --- |

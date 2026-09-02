@@ -1,11 +1,13 @@
 Copy this file to `.kiro/specs/<name>/goal-contract.md` and replace every angle-bracket
 placeholder. Keep the six headings exactly as written; `scripts/check-spec.ps1` checks them.
-Keep the `Phase:` line while only the requirements exist; remove it once the cards and the
-design are in.
+The `Phase:` line tells `scripts/check-spec.ps1` which files may still be absent. It takes
+two values. Keep `Phase: intake` while this file is the only file in the spec folder. Change it
+to `Phase: requirements` when `requirements.md` is written. Remove the line when `design.md`,
+`tasks.md`, and the cards are in; from then on every file is required.
 
 # Goal contract: <job name>
 
-Phase: requirements
+Phase: intake
 
 ## 1. The judge
 

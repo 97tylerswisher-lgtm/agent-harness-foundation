@@ -20,8 +20,10 @@ roles receive only the artifact and the goal, never the orchestrator's reasoning
 | `handoff-verifier` | At wrap or on a stale smell: FRESH or STALE with heal rows | read, shell | no |
 | `instruction-auditor` | Audit one skill, agent, or steering file: format, pointers, bloat | read, shell | yes |
 
-The three panel lenses run together on the same artifact. Spawn all three in parallel; do not
-spawn one alone. The skeptic is the single-pass alternative when a full panel is not warranted.
+Panel size follows the artifact. A foundation artifact (a plan, a design, a spec) gets the
+three named lenses together, spawned in parallel on the same artifact. Goal-shaping or axis
+work adds a product or market lens as a fourth (`skeptic` with a per-lens brief). A single
+small claim gets a lone `skeptic`.
 
 ## Standing worker contract
 

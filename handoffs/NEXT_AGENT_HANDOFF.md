@@ -27,8 +27,8 @@ and reduced to what a fresh session needs. The worked example under
 
 - Environment at work: not yet recorded.
 - Active spec: none. The worked example is a reference, not an active job.
-- Scripts: `install-kiro.ps1`, `check-redaction.ps1`, `distill-fixture.ps1` under
-  `scripts/`; tested on the authoring machine, untested at work.
+- Scripts: `install-kiro.ps1`, `check-redaction.ps1`, `distill-fixture.ps1`, `check-spec.ps1`
+  under `scripts/`; tested on the authoring machine, untested at work.
 
 ## Operating contract
 

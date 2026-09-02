@@ -30,8 +30,9 @@ Real project data never enters this IDE. This rule has no exceptions and no over
 
 ## What you do
 
-1. Before you paste, quote, or read anything the operator provides, run the list above. If an
-   item could be on it, stop and say which line, in one sentence. Do not proceed on a guess.
+1. Read the operator's message. Before you quote any part of it into a file, or build on a
+   value, name, or path in it, run the list above. If an item could be on it, stop and say
+   which line, in one sentence. Do not proceed on a guess.
 2. When you need to know a data shape, ask for the card or the fixture. Do not ask for "a
    sample". Do not infer the shape from a description and build on the inference.
 3. When you write a script that will touch real data at work, it runs outside this IDE and

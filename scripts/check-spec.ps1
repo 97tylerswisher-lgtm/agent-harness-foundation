@@ -20,17 +20,25 @@ Purpose
      criterion in requirements.md, every criterion is cited by at least one task (orphans are
      listed), and at least one task is the human gate.
   5  cards/schema-card.md, cards/edge-case-catalog.md, cards/interface-card.md, and at least
-     one file under fixtures/ exist. When goal-contract.md carries the line
-     "Phase: requirements" in its first ten lines, missing cards and fixtures print PENDING
-     instead of FAIL.
+     one file under fixtures/ exist.
   6  No line in any file under the spec folder contains a term from banned-terms.txt at the
      repo root (literal, case-sensitive; same rules as check-redaction.ps1).
+
+  Phase
+  A "Phase: <value>" line in the first ten lines of goal-contract.md says how far the spec has
+  progressed. A file that a later phase produces prints PENDING instead of FAIL while it is
+  absent:
+    Phase: intake        checks 2, 3, 4, and 5 print PENDING when their files are absent.
+    Phase: requirements  checks 3, 4, and 5 print PENDING when their files are absent.
+    no Phase line        every file is required; an absent file prints FAIL.
+  A file that exists is checked in full regardless of the phase. PENDING rows do not change
+  the exit code.
 
 Usage
   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\check-spec.ps1 -Spec .kiro\specs\<name>
 
 Exit codes
-  0  no FAIL line.
+  0  no FAIL line (PENDING lines are allowed).
   1  at least one FAIL line.
   2  the spec folder does not exist.
 #>
@@ -73,7 +81,7 @@ Write-Output "check-spec: $specPath"
 # Check 1: goal-contract.md
 # ---------------------------------------------------------------------------
 $goalFile = Join-Path $specPath 'goal-contract.md'
-$phaseRequirementsOnly = $false
+$phase = ''   # '', 'intake', or 'requirements'
 if (-not (Test-Path -LiteralPath $goalFile -PathType Leaf)) {
     Write-Fail 1 'goal-contract.md' 'file missing'
 } else {
@@ -95,9 +103,13 @@ if (-not (Test-Path -LiteralPath $goalFile -PathType Leaf)) {
     }
     $top = $goalLines | Select-Object -First 10
     foreach ($line in $top) {
-        if ($line -match '^Phase:\s*requirements\s*$') { $phaseRequirementsOnly = $true }
+        if ($line -match '^Phase:\s*(intake|requirements)\s*$') { $phase = $Matches[1].ToLowerInvariant() }
     }
 }
+# Files a later phase produces are PENDING, not FAIL, while absent.
+$pendingRequirements = ($phase -eq 'intake')
+$pendingDesignTasksCards = ($phase -eq 'intake' -or $phase -eq 'requirements')
+$phaseNote = 'not yet written (Phase: ' + $phase + ')'
 
 # ---------------------------------------------------------------------------
 # Check 2: requirements.md
@@ -106,7 +118,11 @@ $reqFile = Join-Path $specPath 'requirements.md'
 $criteria = @{}   # key "N.M" -> line number
 $reqParsed = $false
 if (-not (Test-Path -LiteralPath $reqFile -PathType Leaf)) {
-    Write-Fail 2 'requirements.md' 'file missing'
+    if ($pendingRequirements) {
+        Write-Pending 2 'requirements.md' $phaseNote
+    } else {
+        Write-Fail 2 'requirements.md' 'file missing'
+    }
 } else {
     $reqParsed = $true
     $reqLines = Read-Lines $reqFile
@@ -229,7 +245,11 @@ if (-not (Test-Path -LiteralPath $reqFile -PathType Leaf)) {
 # ---------------------------------------------------------------------------
 $designFile = Join-Path $specPath 'design.md'
 if (-not (Test-Path -LiteralPath $designFile -PathType Leaf)) {
-    Write-Fail 3 'design.md' 'file missing'
+    if ($pendingDesignTasksCards) {
+        Write-Pending 3 'design.md' $phaseNote
+    } else {
+        Write-Fail 3 'design.md' 'file missing'
+    }
 } else {
     $designLines = Read-Lines $designFile
     $sections = @('Overview', 'Mechanism', 'Invocations', 'Data boundary', 'Human gate', 'Verification', 'Status ledger')
@@ -262,7 +282,11 @@ if (-not (Test-Path -LiteralPath $designFile -PathType Leaf)) {
 # ---------------------------------------------------------------------------
 $tasksFile = Join-Path $specPath 'tasks.md'
 if (-not (Test-Path -LiteralPath $tasksFile -PathType Leaf)) {
-    Write-Fail 4 'tasks.md' 'file missing'
+    if ($pendingDesignTasksCards) {
+        Write-Pending 4 'tasks.md' $phaseNote
+    } else {
+        Write-Fail 4 'tasks.md' 'file missing'
+    }
 } else {
     $taskLines = Read-Lines $tasksFile
     $tasks = @()
@@ -352,8 +376,8 @@ if (Test-Path -LiteralPath $fixturesDir -PathType Container) {
 if ($fixtureCount -eq 0) { $missingCards += 'fixtures\ (at least one file)' }
 if ($missingCards.Count -eq 0) {
     Write-Ok 5 'cards, fixtures' ('three cards present, ' + $fixtureCount + ' fixture file(s)')
-} elseif ($phaseRequirementsOnly) {
-    Write-Pending 5 'cards, fixtures' ('phase 1 only (Phase: requirements); missing: ' + ($missingCards -join ', '))
+} elseif ($pendingDesignTasksCards) {
+    Write-Pending 5 'cards, fixtures' ($phaseNote + '; missing: ' + ($missingCards -join ', '))
 } else {
     Write-Fail 5 'cards, fixtures' ('missing: ' + ($missingCards -join ', '))
 }

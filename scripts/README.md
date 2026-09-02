@@ -61,11 +61,17 @@ checks: (1) `goal-contract.md` has the six field headings from `goal-definition`
 is numbered in sequence and contains `THE SYSTEM SHALL` or `THE SESSION SHALL`; (3) `design.md`
 has the seven skeleton sections in order; (4) every `_Requirements:_` citation in `tasks.md`
 resolves, every criterion is cited by a task (orphans are listed), every task has a citation
-line, and one task is the human gate; (5) the three cards and at least one fixture exist, or
-the spec is phase 1 only (the line `Phase: requirements` in the first ten lines of
-`goal-contract.md`), in which case missing cards print `PENDING`; (6) no line in the folder
-contains a term from `banned-terms.txt`. The script edits nothing.
+line, and one task is the human gate; (5) the three cards and at least one fixture exist; (6)
+no line in the folder contains a term from `banned-terms.txt`. The script edits nothing.
+
+A `Phase:` line in the first ten lines of `goal-contract.md` says how far the spec has
+progressed, and a file that a later phase produces prints `PENDING` instead of `FAIL` while it
+is absent. `Phase: intake` (only `goal-contract.md` exists) makes absent files in checks 2 to
+5 print `PENDING`. `Phase: requirements` (`requirements.md` exists) does the same for checks 3
+to 5. No `Phase:` line means every file is required. A file that exists is checked in full.
+`PENDING` rows do not change the exit code.
 
 Usage: `scripts\check-spec.ps1 -Spec .kiro\specs\<name>`
 
-Exit codes: 0 no `FAIL`; 1 at least one `FAIL`; 2 the spec folder does not exist.
+Exit codes: 0 no `FAIL` (`PENDING` rows are allowed); 1 at least one `FAIL`; 2 the spec folder
+does not exist.

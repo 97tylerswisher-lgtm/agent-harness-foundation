@@ -18,7 +18,9 @@ says, in order. Do not skip a step because it looks obvious.
    the current task needs.
 4. Skills load on demand. Each skill has a description that says when to use it. Load a
    skill before the work it governs, not from memory. The routing table is
-   `skills/README.md`; the installed copies Kiro reads live under `.kiro/skills/`.
+   `skills/README.md` at the repo root (it is not mirrored under `.kiro/`); the installed
+   skill copies Kiro reads live under `.kiro/skills/`. The agent roster and the standing
+   worker contract are `agents/README.md`, also root only.
 
 Live handoff:
 
@@ -32,7 +34,7 @@ Live handoff:
 | Intake | turn the operator's request into a goal contract | `goal-definition` skill |
 | Boundary | decide what may enter this IDE; stop and ask if unsure | `40-data-boundary.md` |
 | Step zero | get the cards and fixtures that describe the data's shape | `data-distillation` skill |
-| Spec | write requirements, design, tasks under `.kiro/specs/<name>/` | `spec-authoring` skill |
+| Spec | write requirements, design, tasks under `.kiro/specs/<name>/`; run `scripts/check-spec.ps1` before showing any phase | `spec-authoring` skill |
 | Build | run tasks; delegate per the decision chart; check with a blind critic | `agent-orchestration-workflows` skill |
 | Gate | stop at the human review the design names; never automate past it | the spec's `design.md` |
 | Wrap | fold decisions into the loop log and the handoff | `context-checkpoint` skill |

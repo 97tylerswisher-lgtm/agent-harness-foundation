@@ -156,9 +156,10 @@ Protocol:
   conclusion. Divergence is the signal.
 - Verify against artifacts: each critic checks claims on disk. This catches a stale premise.
 - Parallel: one barrier; fold all findings; reconcile divergences before committing.
-- Scale to task: mechanical edits skip the panel; a substantive plan gets two to four lenses
-  (the product lens earns its seat on foundation or goal-shaping work). The soundness pass
-  is the mechanism lens; do not double it. A lone `skeptic` covers single-check work.
+- Scale to task: mechanical edits skip the panel. A foundation artifact gets the three named
+  lenses together. Goal-shaping or axis work adds the product or market lens as a fourth. A
+  single small claim gets a lone `skeptic`. The soundness pass is the mechanism lens; do not
+  double it.
 - Sharpen each lens: brief in the premortem grammar ("assume the plan has already failed;
   why?"). Require a forced verdict plus a 0 to 100 confidence. When folding, cluster
   findings by root cause, then name the single highest-leverage fix.

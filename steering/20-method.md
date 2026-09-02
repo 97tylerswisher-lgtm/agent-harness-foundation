@@ -44,6 +44,12 @@ Two rules that are easy to miss:
   `skeptic` is for a single small claim. One critic self-grades the lenses it does not hold.
 - Load `agent-orchestration-workflows` before you spawn anything. It holds the brief shape,
   the return caps, and the fold discipline. Spawning from memory drops them.
+- How spawning works here: the roles under `.kiro/agents/` are Kiro custom agents. A chat
+  session delegates to one as a sub-agent (isolated context, parallel); the agent's front
+  matter names its tools and its `resources` (`skill://<name>` for a skill, `file://<path>`
+  for a file), described in `agent-authoring`. If your Kiro build offers no sub-agents, run
+  each lens yourself in a fresh chat with only the artifact and the lens brief, and say so
+  in the loop log.
 
 ## Manual pass first
 

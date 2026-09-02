@@ -58,9 +58,11 @@ Run the steps in this order. Do not skip a step because the session was short.
    closed row adds a one-line evidence pointer to its text. A learning that lives only
    in a retro row is logged, not implemented; wire it into a steering rule, a skill, or a
    script in the same wrap when the fix is cheap.
-3. Move the finished session block in `handoffs/LOOP_LOG.md` under the archive heading at the
-   bottom of the file. This is a plain cut and paste; there is no script. The live area at
-   the top then holds only the next session's empty skeleton.
+3. Move the finished session block in `handoffs/LOOP_LOG.md` under the `## Archive` heading at
+   the bottom of the file. Retitle it `### Session <n> (<one-word label>)` and demote its five
+   sections (Decisions, Hiccups, Lessons, Operator questions and answers, Open self-questions)
+   to `####`. This is a plain cut and paste; there is no script. The live area at the top then
+   holds only the next session's empty skeleton.
 4. Run `scripts/check-redaction.ps1` and fix every hit. Zero hits before every commit.
 5. Commit and push to the remote (GitLab at work; the operator may also mirror to a public
    copy). The message starts with the session number, then one headline and two to four
