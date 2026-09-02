@@ -3,7 +3,7 @@
 A harness for running an AI coding agent on real engineering work in the Kiro IDE: what the
 agent reads at boot, how it turns a request into a spec, how it keeps controlled data out of
 the IDE, when it stops for a human, and how it hands off to the next session. Plain markdown
-plus three optional PowerShell scripts. No extensions, no MCP, no Node required.
+plus four optional PowerShell scripts. No extensions, no MCP, no Node required.
 
 It is written for a model that follows explicit structure and does not infer missing steps.
 Every step names the file that governs it.
@@ -20,10 +20,10 @@ Every step names the file that governs it.
    `handoffs/NEXT_AGENT_HANDOFF.md`, and asks for the first project request.
 
 Optional: `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-redaction.ps1`
-before every commit. `scripts/README.md` describes the three scripts. The markdown works without them.
+before every commit. `scripts/README.md` describes the four scripts. The markdown works without them.
 
 A companion repo, a trimmed fork of the Ponytail coding-style ruleset
-(`https://github.com/97tylerswisher-lgtm/ponytail`, branch `kiro`), adds a code-minimalism
+(published beside this repo under the same account, branch `kiro`), adds a code-minimalism
 steering file and four skills. Clone it beside this one and copy its `.kiro/steering/` and
 `.kiro/skills/` entries in, or use it on its own.
 
@@ -68,7 +68,7 @@ handoffs/                 NEXT_AGENT_HANDOFF.md, LOOP_LOG.md, RETRO.md
   specs/<name>/               one folder per job: goal contract, cards, fixtures,
                               requirements, design, tasks; the example adds
                               run-report.ps1 and stubs/
-scripts/                  install-kiro.ps1, check-redaction.ps1, distill-fixture.ps1
+scripts/                  install-kiro.ps1, check-redaction.ps1, distill-fixture.ps1, check-spec.ps1
 ```
 
 Edit `steering/`, `skills/`, and `agents/` at the root, then run `scripts/install-kiro.ps1`
