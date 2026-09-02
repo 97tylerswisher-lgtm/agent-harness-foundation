@@ -1,6 +1,6 @@
 # scripts
 
-Three Windows PowerShell 5.1 scripts. No modules, no Node, no extensions. Each prints plain
+Four Windows PowerShell 5.1 scripts. No modules, no Node, no extensions. Each prints plain
 lines and returns an exit code. Run any of them as
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\<name>.ps1`.
 
@@ -50,3 +50,22 @@ Usage: `scripts\distill-fixture.ps1 -InputFile <real file> -OutDir <folder> [-Ro
 
 Exit codes: 0 both outputs written and their paths printed; 1 input missing, empty, binary, or
 without data rows; 2 output folder or write failed.
+
+## check-spec.ps1
+
+Checks one spec folder before the model shows it to the operator. Prints one line per check
+as `OK`, `FAIL`, or `PENDING` with the check number, the file, and a one-line reason. The
+checks: (1) `goal-contract.md` has the six field headings from `goal-definition`
+(`## 1. The judge` through `## 6. Verification`); (2) `requirements.md` has an Introduction,
+`### Requirement N` blocks each with a User Story and Acceptance Criteria, and every criterion
+is numbered in sequence and contains `THE SYSTEM SHALL` or `THE SESSION SHALL`; (3) `design.md`
+has the seven skeleton sections in order; (4) every `_Requirements:_` citation in `tasks.md`
+resolves, every criterion is cited by a task (orphans are listed), every task has a citation
+line, and one task is the human gate; (5) the three cards and at least one fixture exist, or
+the spec is phase 1 only (the line `Phase: requirements` in the first ten lines of
+`goal-contract.md`), in which case missing cards print `PENDING`; (6) no line in the folder
+contains a term from `banned-terms.txt`. The script edits nothing.
+
+Usage: `scripts\check-spec.ps1 -Spec .kiro\specs\<name>`
+
+Exit codes: 0 no `FAIL`; 1 at least one `FAIL`; 2 the spec folder does not exist.

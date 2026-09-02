@@ -1,6 +1,7 @@
 Copy this file to `.kiro/specs/<kebab-name>/cards/interface-card.md`, one per spec. The
 operator fills it from the existing scripts, outside the IDE. Signatures only; never a body,
-formula, or query. Delete these instruction lines when done.
+formula, or query. These fields are the minimum; add any field the Mechanism section of
+`design.md` needs. Delete these instruction lines when done.
 
 # Interface card: <job name>
 
@@ -22,6 +23,9 @@ formula, or query. Delete these instruction lines when done.
 - Arguments:
   - `<argument1>` (<type>): <meaning>
   - `<argument2>` (<type>): <meaning>
+- Trigger: <called by name, event-driven on <event>, button on <sheet>>
+- Paste target: <fixed range <sheet>!<A1>, named range <name>, table <name>, or "none">
+- Export: <PDF via <method>, other format via <method>, or "none">
 - Returns or produces: <a return value, or a file at <generic path pattern>>
 - Side effects: <files written, workbooks opened, external systems touched, or "none">
 - Preconditions: <what must exist before the call, for example "the input file is closed">
@@ -39,6 +43,9 @@ formula, or query. Delete these instruction lines when done.
 - Signature: `<>`
 - Arguments:
   - `<argument>` (<type>): <meaning>
+- Trigger: <>
+- Paste target: <>
+- Export: <>
 - Returns or produces: <>
 - Side effects: <>
 - Preconditions: <>
@@ -48,6 +55,14 @@ formula, or query. Delete these instruction lines when done.
   ```powershell
   <exact command>
   ```
+
+## Workbook
+
+Fill this section when an entry point lives in a spreadsheet; otherwise write "not applicable".
+
+- Calculation mode: <automatic, manual>
+- Full recalculation before export: <forced by the macro, forced by the runner, not forced>
+- Join key: <the column or cell that links a data row to its place in the template>
 
 ## Environment
 

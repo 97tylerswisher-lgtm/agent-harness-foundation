@@ -12,7 +12,8 @@ and reduced to what a fresh session needs. The worked example under
 
 ## Mandate for the next session
 
-1. Confirm the environment: Kiro version (Help, About), whether `node --version` works,
+1. Confirm the environment: ask the operator for the Kiro version (Help, About is a menu
+   only they can read), check whether `node --version` works,
    whether `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-redaction.ps1`
    runs.
    Record the answers under State below.

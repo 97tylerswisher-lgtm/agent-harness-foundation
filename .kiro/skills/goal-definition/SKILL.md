@@ -20,7 +20,9 @@ it does not replace them.
 
 ## The output: a Goal Contract
 
-Write one short markdown file at `.kiro/specs/<name>/goal-contract.md`. It is the input to the
+Write one short markdown file at `.kiro/specs/<name>/goal-contract.md`, starting from
+`references/goal-contract-skeleton.md` (its six headings are what `scripts/check-spec.ps1`
+verifies). It is the input to the
 `spec-authoring` skill. Do not write the spec or launch the work until all six fields are
 non-empty. Each field maps to a real failure it prevents.
 

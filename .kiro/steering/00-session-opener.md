@@ -47,9 +47,10 @@ A new project starts at Intake. A continuing project starts where the handoff sa
   the operator's questions and your answers, open self-questions. Do not wait for the wrap.
 - When an input is missing (a card, a fixture, a decision only the operator can make), stop
   and ask for it in one prose block. Do not invent a shape, a path, or a value.
-- Never cite a repo file, skill, agent, or helper script that does not exist in this repo.
-  If you need one that does not exist, say so and propose it. Standard tools such as `git`
-  and `powershell` are fine.
+- Never cite a repo file, skill, agent, or helper script that does not exist in this repo as
+  if it existed. A file a later step will create (a card, a design) may be named as planned
+  work, marked as such. If you need a skill or script that does not exist, say so and propose
+  it. Standard tools such as `git` and `powershell` are fine.
 - Verify against artifacts, not reports. A sub-agent's "done" is checked by opening what it
   wrote.
 - Checkpoint at phase boundaries and before the conversation gets long, not only at the end.

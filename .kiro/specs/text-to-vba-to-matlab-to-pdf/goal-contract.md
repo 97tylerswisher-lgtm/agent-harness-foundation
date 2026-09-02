@@ -4,7 +4,7 @@ Worked example. The job: delimited text files from a test rig land in a folder, 
 Excel macro reshapes them, an existing MATLAB function turns the result into a multi-plot PDF,
 and a person reviews the PDF. Everything here is synthetic.
 
-## 1. Judge
+## 1. The judge
 
 Real: the operator's review of the PDF against the hand-built report they make today.
 Proxy: `run-report.ps1` exit 0 plus the step-3 check (PDF exists, size > 0, page count >= 1).
@@ -25,7 +25,7 @@ The proxy is annotate-only. It proves the pipeline ran, not that the plots are r
 `fixtures/*.txt` (20 synthetic rows each). Cheapest source for each: a file the operator wrote
 outside the IDE. No real export ever enters.
 
-## 4. Roles
+## 4. Roles and tiers
 
 One code-worker at the default tier builds `run-report.ps1` and the stubs and runs the dry run.
 One fresh-eye critic blind-checks the spec against the cards. The operator is the

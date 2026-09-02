@@ -2,11 +2,20 @@ Copy this file to `.kiro/specs/<kebab-name>/cards/schema-card.md`. The card hold
 per file type; repeat the section below for each file type, so each type has its own File
 list, Columns table, and Fixture list. `scripts/distill-fixture.ps1` drafts the column index,
 type, shape, and numeric range; the operator fills the rest and chooses a generic name for
-every column by hand. Delete these instruction lines when done.
+every column by hand. These fields are the minimum; add any field the Mechanism section of
+`design.md` needs. Delete these instruction lines when done.
 
 # Schema card
 
 ## <File role, for example "weekly instrument export">
+
+### Container
+
+- Container: <none; a zip; a folder>
+- Layout: <what the container holds, for example "one data file plus a photos subfolder">
+- Data entry: <the entry that is the data file, by pattern, for example `*.csv` at the root>
+- Attachments: <extensions of non-data entries, for example `.jpg`, `.png`; or "none">
+- Attachment column: <the column that names an attachment file, or "none">
 
 ### File
 
@@ -29,6 +38,11 @@ every column by hand. Delete these instruction lines when done.
 | 2 | <channel_id> | <string> | <letters and digits, length 6> | <no> | <renamed from a sensitive name> |
 | 3 | <reading> | <decimal> | <unit> | <yes> | <blank when the sensor is off> |
 | 4 | <status> | <enum> | <one of OK, WARN, FAIL> | <no> | |
+
+### Report roles
+
+- Output date column: <the column whose value dates the report, or "the run date">
+- Group-by column: <the column the report groups rows by, or "none">
 
 ### Fixture
 

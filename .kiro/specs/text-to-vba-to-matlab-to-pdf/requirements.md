@@ -93,11 +93,11 @@ review runs on its own.
 Acceptance Criteria:
 
 1. WHEN a real export file, the real macro workbook, the real MATLAB function, or a rig,
-   program, or part identifier would enter the IDE THE SYSTEM SHALL stop and report instead
+   program, or part identifier would enter the IDE THE SESSION SHALL stop and report instead
    of reading it
-2. WHEN step 3 completes THE SYSTEM SHALL stop and show the operator the PDF list before any
-   later step runs
-3. WHEN a step after the PDF review (filing, mailing, sign-off) would run THE SYSTEM SHALL
+2. WHEN step 3 completes THE SESSION SHALL show the operator the PDF list and run no later
+   step until the operator responds
+3. WHEN a step after the PDF review (filing, mailing, sign-off) would run THE SESSION SHALL
    stop and report
 
 ## Checks before showing the operator

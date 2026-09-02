@@ -37,6 +37,14 @@ view to yours. Divergence is the signal. Fold only what you verify against the a
 say what you rejected. Roles: `skeptic`, `goal-critic`, `architecture-critic`,
 `mechanism-critic`.
 
+Two rules that are easy to miss:
+
+- A foundation artifact (a goal contract, a requirements file, a design) gets the three-lens
+  panel, `goal-critic`, `architecture-critic`, and `mechanism-critic`, run together. A lone
+  `skeptic` is for a single small claim. One critic self-grades the lenses it does not hold.
+- Load `agent-orchestration-workflows` before you spawn anything. It holds the brief shape,
+  the return caps, and the fold discipline. Spawning from memory drops them.
+
 ## Manual pass first
 
 Prove an approach with one hand-run pass before you write the script, the skill, or the

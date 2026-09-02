@@ -37,6 +37,10 @@ Each card lives at `.kiro/specs/<name>/cards/<card-name>.md`. Fixtures live at
 (`cards/schema-card.md`) with one section and one Columns table per file type; one fixture per
 file type; one edge-case catalog and one interface card per spec.
 
+The schema card template lists the minimum fields; the model asks the operator for any field
+the Mechanism section of `design.md` needs that the card lacks. The interface card template
+lists the minimum fields; the model asks for any missing field the same way.
+
 ## The classification checklist
 
 The operator runs this over every file before it enters the IDE, including files the script

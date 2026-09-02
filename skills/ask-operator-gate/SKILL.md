@@ -20,6 +20,11 @@ whose role is the end goal, not the mechanism.
 Run the gate for real. Load this body at the urge and walk the five filters as a check.
 Reciting the gate from memory and escalating anyway is the same failure in a different form.
 
+The counterweight: something the operator explicitly asked for is theirs to redefine, not
+yours to default away. If a rule in this repo blocks a stated ask, or two rules disagree about
+it, that is a genuine fork. Say so in one item, recommend, and let them decide. Silently
+narrowing their request to fit the rules is drift, not decisiveness.
+
 ## Form: prose only
 
 If a question survives all five filters, ask it in a plain markdown block in the chat reply.

@@ -43,6 +43,7 @@ hyphens and names the job, not the tool (`weekly-report-from-export`, not `matla
    requirement. An orphan on either side means the spec is not finished.
 6. Each phase stops for the operator. Write `requirements.md`, show it, wait. Then `design.md`,
    show it, wait. Then `tasks.md`, show it, wait.
+   Before each show, run `scripts/check-spec.ps1 -Spec .kiro/specs/<name>` and fix every `FAIL` line first.
 7. After each task runs, update its Status ledger row in `design.md` with the evidence path.
    Never mark the human gate task done; the operator marks it.
 8. A requirement that changes mid-build goes back to phase 1. Do not patch a task to satisfy a
@@ -67,8 +68,11 @@ Source: fields 1 (judge), 2 (done-when), and 5 (do-not-touch) of the goal contra
    can verify. "THE SYSTEM SHALL work correctly" is not a criterion. "WHEN the input file has
    an extra header line THE SYSTEM SHALL skip it and parse the remaining rows" is.
 5. Add a story for the do-not-touch fence, with criteria of the form "WHEN <forbidden
-   condition> THE SYSTEM SHALL stop and report". The data boundary and the human gate each get
+   condition> THE SESSION SHALL stop and report". The data boundary and the human gate each get
    one criterion here.
+
+   Subject rule: runtime criteria (what the built thing does) use THE SYSTEM. Boundary
+   criteria (what the agent working in the IDE does) use THE SESSION.
 6. Show the file to the operator. Wait for approval before phase 2.
 
 After hand edits, check the file for conflicting criteria. Use Kiro's "Analyze Requirements"

@@ -191,8 +191,9 @@ Assume a locked-down environment until the operator says otherwise.
   already present. Probe with one command before relying on a tool.
 - MCP servers may be blocked. Design each step so it also works with read, write, and shell
   alone.
-- No background daemons, watchers, or scheduled tasks. A long-running process is a policy
-  violation and a support ticket.
+- No background daemons, watchers, or scheduled tasks unless the design names one and the
+  operator has confirmed the site allows it. Build the one-command runner first; a trigger
+  that calls it is a separate spec.
 - Prefer one-command scripts: a single `.ps1` under `scripts/` that takes explicit
   parameters, prints what it did, and exits nonzero on failure. Chains of ad hoc shell
   commands do not survive a session handoff.
