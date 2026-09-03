@@ -24,3 +24,8 @@ nowhere else. Authoring rules: `skill-authoring`.
 | `context-checkpoint` | Wrapping a session or checkpointing mid-task: the retro questions, folding the loop log into the handoff, and the wrap order | `SKILL.md` |
 | `spec-authoring` | Turning a goal contract into `.kiro/specs/<name>/requirements.md` (EARS), `design.md`, and `tasks.md`, including the status ledger and the named human gate | `SKILL.md`, `references/` (spec skeletons) |
 | `data-distillation` | Step zero before any build over real data: getting the schema card, synthetic fixtures, edge-case catalog, and interface card from the operator or `scripts/distill-fixture.ps1` | `SKILL.md`, `references/` (card templates) |
+| `ponytail` | before writing new code: climb the ladder (do nothing, reuse, stdlib, native, dependency, one line, minimum) | on `/ponytail` or by description |
+| `ponytail-review` | reviewing a diff for code that should not have been written | on demand |
+| `ponytail-audit` | the same review over a whole repo | on demand |
+| `ponytail-debt` | listing the `ponytail:` comments left as a debt ledger | on demand |
+

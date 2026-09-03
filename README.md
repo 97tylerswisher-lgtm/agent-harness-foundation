@@ -22,10 +22,10 @@ Every step names the file that governs it.
 Optional: `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-redaction.ps1`
 before every commit. `scripts/README.md` describes the four scripts. The markdown works without them.
 
-A companion repo, a trimmed fork of the Ponytail coding-style ruleset
-(`https://github.com/97tylerswisher-lgtm/ponytail_kiro`), adds a code-minimalism
-steering file and four skills. Clone it beside this one and copy its `.kiro/steering/` and
-`.kiro/skills/` entries in, or use it on its own.
+The Ponytail coding-style ruleset (MIT, see `NOTICE`) is included: `steering/ponytail.md`
+loads every turn, `steering/platform-native.md` on request, and four `ponytail-*` skills. Its
+trimmed source, refreshed from upstream, is `https://github.com/97tylerswisher-lgtm/ponytail_kiro`;
+copy its `.kiro/steering/` and `.kiro/skills/` entries over these when it updates.
 
 ## The flow
 
@@ -60,7 +60,10 @@ steering/                 always-on rules (source); one domain per file
   20-method.md            design backwards, name the judge, do not self-grade
   30-structure.md         what lives where, hygiene, budgets, source control
   40-data-boundary.md     real data never enters the IDE
-skills/                   procedures loaded on demand (source); skills/README.md routes them
+  ponytail.md             the Ponytail laziness ladder (always on)
+  platform-native.md      native-vs-dependency reference (on request)
+skills/                   procedures loaded on demand (source); skills/README.md routes them;
+                          includes the four ponytail-* skills
 agents/                   spawnable roles (source); agents/README.md is the roster
 handoffs/                 NEXT_AGENT_HANDOFF.md, LOOP_LOG.md, RETRO.md
 .kiro/

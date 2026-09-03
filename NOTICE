@@ -1,0 +1,5 @@
+This repository includes files from DietrichGebert/ponytail (https://github.com/DietrichGebert/ponytail),
+MIT License, Copyright (c) Dietrich Gebert: steering/ponytail.md, steering/platform-native.md,
+skills/ponytail/, skills/ponytail-review/, skills/ponytail-audit/, skills/ponytail-debt/, and their
+installed copies under .kiro/. The trimmed source they are refreshed from is
+https://github.com/97tylerswisher-lgtm/ponytail_kiro.
