@@ -1,6 +1,6 @@
 ---
 name: context-checkpoint
-description: Session tracking and wrap procedure. Phase 0 (every session) logs decisions, hiccups, lessons, operator answers, and open self-questions in handoffs/LOOP_LOG.md as they happen. The wrap folds that log into handoffs/NEXT_AGENT_HANDOFF.md, adds open improvements to handoffs/RETRO.md, archives the session block, runs the redaction check, commits and pushes, spawns handoff-verifier, and ends the reply with a Zooming out block. Use when the operator says "checkpoint", "wrap up", "review", or "handoff", at every phase boundary, and before the context window gets long. Load this file before running a checkpoint; do not run it from memory.
+description: Session tracking and wrap procedure. Phase 0 (every session) logs decisions, hiccups, lessons, operator answers, and open self-questions in handoffs/LOOP_LOG.md as they happen. The wrap folds that log into handoffs/NEXT_AGENT_HANDOFF.md, adds open improvements to handoffs/RETRO.md, writes memory files under handoffs/memory/, archives the session block, runs the redaction check, commits and pushes, spawns handoff-verifier, and ends the reply with a Zooming out block. Use when the operator says "checkpoint", "wrap up", "review", or "handoff", at every phase boundary, and before the context window gets long. Load this file before running a checkpoint; do not run it from memory.
 ---
 
 # Context checkpoint
@@ -58,21 +58,26 @@ Run the steps in this order. Do not skip a step because the session was short.
    closed row adds a one-line evidence pointer to its text. A learning that lives only
    in a retro row is logged, not implemented; wire it into a steering rule, a skill, or a
    script in the same wrap when the fix is cheap.
-3. Move the finished session block in `handoffs/LOOP_LOG.md` under the `## Archive` heading at
+3. Write a memory file under `handoffs/memory/` for any durable preference, standing
+   correction, or project fact that a future session would otherwise re-derive: front matter
+   `name`, `description`, `type`; one fact; for `feedback` and `project` a Why line and a How
+   to apply line. Add its row to `handoffs/memory/INDEX.md`. Update an existing memory rather
+   than duplicating it. Delete a memory proven wrong, with its row.
+4. Move the finished session block in `handoffs/LOOP_LOG.md` under the `## Archive` heading at
    the bottom of the file. Retitle it `### Session <n> (<one-word label>)` and demote its five
    sections (Decisions, Hiccups, Lessons, Operator questions and answers, Open self-questions)
    to `####`. This is a plain cut and paste; there is no script. The live area at the top then
    holds only the next session's empty skeleton.
-4. Run `scripts/check-redaction.ps1` and fix every hit. Zero hits before every commit.
-5. Commit and push to the remote (GitLab at work; the operator may also mirror to a public
+5. Run `scripts/check-redaction.ps1` and fix every hit. Zero hits before every commit.
+6. Commit and push to the remote (GitLab at work; the operator may also mirror to a public
    copy). The message starts with the session number, then one headline and two to four
    bullets. Never force-push. On a rejected push, pull with rebase and push again; on a real
    conflict, stop and report to the operator.
-6. Spawn the `handoff-verifier` agent to check the handoff against disk. Fix every stale row
+7. Spawn the `handoff-verifier` agent to check the handoff against disk. Fix every stale row
    it reports, then re-read the handoff as if you were the next session holding only that
    file: does it route to the goal, does it avoid re-asking the operator, and is every state
    claim true on disk now.
-7. End the chat reply with the Zooming out block (below).
+8. End the chat reply with the Zooming out block (below).
 
 ## Retrospective
 

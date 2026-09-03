@@ -17,6 +17,7 @@ What lives where, and the rules that keep it that way.
 | Spec | `.kiro/specs/<name>/` | one job's contract: goal contract, requirements, design, tasks, cards, fixtures |
 | Handoff | `handoffs/` | the rolling state between sessions: handoff, loop log, retro register |
 | Script | `scripts/*.ps1` | optional helpers; the markdown works without them |
+| Hook | `.kiro/hooks/*.json` | a Kiro trigger that runs a script and returns its output to the agent |
 
 Edit every object under `.kiro/` directly. Nothing there is generated. The skills routing
 table is `docs/skills-routing.md`; the agents roster is `docs/agents-roster.md`.
@@ -52,6 +53,25 @@ table is `docs/skills-routing.md`; the agents roster is `docs/agents-roster.md`.
 - A skill stays under 12 KB. Move depth into its `references/` folder.
 - A sub-agent's return is capped in its brief: the verdict plus the top findings, each with a
   file and line. Long reasoning goes in a file the agent writes; it returns the path.
+
+## Context assembly
+
+What is in the window at each phase of the flow in `00-session-opener.md`. Each phase adds to
+the one before it.
+
+| Phase | In context |
+| --- | --- |
+| Boot | steering, the handoff, the memory index (`handoffs/memory/INDEX.md`) |
+| Intake | plus `goal-definition` and the operator's message |
+| Spec | plus `spec-authoring` and the cards |
+| Build | plus the one task, the files it touches, and the delegate-or-inline chart |
+| Wrap | plus `context-checkpoint` |
+
+- Load the skill for the phase you are in, not the next one.
+- Before any run longer than a few turns, write the current state (decisions, the file list,
+  the next step) to `handoffs/LOOP_LOG.md`, so an automatic compaction cannot lose it.
+- Put the instruction that matters most at the top of a brief and repeat the stop condition
+  at its end.
 
 ## Code
 

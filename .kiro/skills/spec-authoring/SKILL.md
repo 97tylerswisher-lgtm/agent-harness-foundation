@@ -52,6 +52,8 @@ for what goes in and what comes out. A job with intermediate stages chains them 
 8. A requirement that changes mid-build goes back to phase 1. Do not patch a task to satisfy a
    requirement that was never written.
 
+The phases, their stops, and the build loop are drawn in `references/spec-phases.flowchart.md`.
+
 ## Phase 1. Requirements
 
 Source: fields 1 (judge), 2 (done-when), and 5 (do-not-touch) of the goal contract.

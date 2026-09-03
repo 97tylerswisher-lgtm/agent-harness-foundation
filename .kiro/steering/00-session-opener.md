@@ -13,10 +13,12 @@ says, in order. Do not skip a step because it looks obvious.
 1. This file, then the other steering files (they are all loaded with it).
 2. The live handoff, pulled in below. It says where the last session stopped and what the
    next session does first.
-3. The active spec named in the handoff, under `.kiro/specs/<name>/`. Read its
+3. The memory index, pulled in below. Open a memory file (`handoffs/memory/<name>.md`) only
+   when its hook matches the current work. Never load them all.
+4. The active spec named in the handoff, under `.kiro/specs/<name>/`. Read its
    `goal-contract.md`, then `tasks.md`, then whichever of `requirements.md` and `design.md`
    the current task needs.
-4. Skills load on demand. Each skill has a description that says when to use it. Load a
+5. Skills load on demand. Each skill has a description that says when to use it. Load a
    skill before the work it governs, not from memory. The routing table is
    `docs/skills-routing.md`. The agent roster and the standing worker contract are
    `docs/agents-roster.md`.
@@ -24,6 +26,10 @@ says, in order. Do not skip a step because it looks obvious.
 Live handoff:
 
 #[[file:handoffs/NEXT_AGENT_HANDOFF.md]]
+
+Memory index:
+
+#[[file:handoffs/memory/INDEX.md]]
 
 ## The flow every project follows
 

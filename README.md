@@ -63,7 +63,8 @@ AGENTS.md                 the five-line boot note for tools that read only AGENT
     platform-native.md    native-vs-dependency reference (on request)
   .kiro/skills/<name>/          procedures loaded on demand; includes the four ponytail-* skills
   .kiro/agents/<name>.md        spawnable roles
-  hooks/                  Kiro hooks (none defined)
+  hooks/                  harness-checks.json: check-spec -All after each task,
+                          check-redaction when the agent stops
   specs/<name>/           one folder per job: goal contract, cards, fixtures,
                           requirements, design, tasks; the example adds
                           run-report.ps1 and stubs/
@@ -75,6 +76,8 @@ scripts/                  check-redaction.ps1, distill-fixture.ps1, check-spec.p
 ```
 
 Edit steering, skills, agents, and specs under `.kiro/` directly. Nothing there is generated.
+The two hooks in `.kiro/hooks/` make the spec and redaction checks mechanical inside Kiro;
+`.kiro/hooks/README.md` says when they run and how to disable one.
 
 ## The worked example
 

@@ -56,7 +56,12 @@ is absent. `Phase: intake` (only `goal-contract.md` exists) makes absent files i
 to 5. No `Phase:` line means every file is required. A file that exists is checked in full.
 `PENDING` rows do not change the exit code.
 
-Usage: `scripts\check-spec.ps1 -Spec .kiro\specs\<name>`
+Usage: `scripts\check-spec.ps1 -Spec .kiro\specs\<name>` or `scripts\check-spec.ps1 -All`
 
-Exit codes: 0 no `FAIL` (`PENDING` rows are allowed); 1 at least one `FAIL`; 2 the spec folder
-does not exist.
+`-All` runs the same checks on every folder under `.kiro\specs\`, prints one block per spec,
+and ends with one summary line (`check-spec: N spec(s), X FAIL, Y PENDING`). The hook in
+`.kiro/hooks/harness-checks.json` runs this form after each spec task.
+
+Exit codes: 0 no `FAIL` in any checked spec (`PENDING` rows are allowed); 1 at least one
+`FAIL`; 2 the spec folder does not exist, `.kiro\specs\` has no folders, or neither switch was
+given.

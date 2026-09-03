@@ -20,8 +20,8 @@ nowhere else. Authoring rules: `skill-authoring`.
 | `self-learning-research` | A request is high-level or dictated, a technical detail is missing or may have drifted, or research findings need a permanent home on disk | `SKILL.md` |
 | `new-knowledge-triage` | Absorbing external agent-engineering content (a thread, a video, an article, a found repo) and deciding adopt, pilot, defer, archive, or discard with a closed verdict | `SKILL.md` |
 | `flowchart` | Charting a decision tree, a procedure, a data path, or a gate sequence as a standard flow chart in mermaid with a permanent `.flowchart.md` file | `SKILL.md` |
-| `context-checkpoint` | Wrapping a session or checkpointing mid-task: the retro questions, folding the loop log into the handoff, and the wrap order | `SKILL.md` |
-| `spec-authoring` | Turning a goal contract into `.kiro/specs/<name>/requirements.md` (EARS), `design.md`, and `tasks.md`, including the status ledger and the named human gate | `SKILL.md`, `references/` (spec skeletons) |
+| `context-checkpoint` | Wrapping a session or checkpointing mid-task: the retro questions, folding the loop log into the handoff, writing memory files under `handoffs/memory/`, and the wrap order | `SKILL.md` |
+| `spec-authoring` | Turning a goal contract into `.kiro/specs/<name>/requirements.md` (EARS), `design.md`, and `tasks.md`, including the status ledger and the named human gate | `SKILL.md`, `references/` (spec skeletons, spec-phases chart) |
 | `data-distillation` | Step zero before any build over real data: getting the schema card, synthetic fixtures, edge-case catalog, and interface card from the operator or `scripts/distill-fixture.ps1` | `SKILL.md`, `references/` (card templates) |
 | `ponytail` | before writing new code: climb the ladder (do nothing, reuse, stdlib, native, dependency, one line, minimum) | on `/ponytail` or by description |
 | `ponytail-review` | reviewing a diff for code that should not have been written | on demand |
