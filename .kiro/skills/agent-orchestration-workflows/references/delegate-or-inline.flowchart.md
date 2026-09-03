@@ -1,6 +1,6 @@
 # Delegate or inline: the orchestrator's decision tree
 
-Source of truth: `skills/agent-orchestration-workflows/SKILL.md` (The delegate-or-inline
+Source of truth: `.kiro/skills/agent-orchestration-workflows/SKILL.md` (The delegate-or-inline
 decision). This chart restates it; the source binds.
 
 ```mermaid
@@ -20,7 +20,7 @@ flowchart TD
   R4b{"~5k to ~20k rather than over ~20k?"}
   R4c{"does the decision need<br/>the raw detail?"}
   S["Spawn a worker"]
-  R5a{"Rule 5, who: does an<br/>agents/ role fit the job?"}
+  R5a{"Rule 5, who: does an<br/>.kiro/agents/ role fit the job?"}
   N5["Spawn it by name"]
   G5["Inline brief on the closest generic role<br/>(code-worker for builds,<br/>research-worker for reading)"]
   MINT["Brief hand-written 2-3x:<br/>mint it (agent-authoring)"]
@@ -90,6 +90,6 @@ flowchart TD
   procedures you own stay inline and delegate only their mechanical phases.
 - The numbers are calibration defaults, not laws; a deviation and its reason go in
   `handoffs/LOOP_LOG.md`.
-- The maker-is-not-checker rule for your own edits to `steering/`, `skills/`, or `agents/`
-  (spawn `instruction-auditor` first) governs your edits, not a need's routing, so it is not
-  drawn.
+- The maker-is-not-checker rule for your own edits to `.kiro/steering/`, `.kiro/skills/`, or
+  `.kiro/agents/` (spawn `instruction-auditor` first) governs your edits, not a need's routing,
+  so it is not drawn.

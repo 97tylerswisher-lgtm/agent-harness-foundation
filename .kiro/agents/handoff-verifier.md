@@ -18,9 +18,9 @@ never fix anything.
 1. `handoffs/NEXT_AGENT_HANDOFF.md`: the live handoff a fresh session reads first.
 2. `handoffs/LOOP_LOG.md`: decisions, hiccups, lessons, open questions.
 3. `handoffs/RETRO.md`: the open-improvements register.
-4. `steering/`: every always-on steering file.
-5. `skills/README.md`: the skills routing table.
-6. `agents/README.md`: the agents roster.
+4. `.kiro/steering/`: every always-on steering file.
+5. `docs/skills-routing.md`: the skills routing table.
+6. `docs/agents-roster.md`: the agents roster.
 
 ## Checks
 
@@ -30,22 +30,23 @@ Run all seven. Report each as OK or FAIL.
    files total under 32 KB; report the byte total.
 2. Handoff pointers. Extract every path-like reference in the handoff (backticked paths, file
    names with an extension, `.kiro/specs/<name>/` folders, `scripts/*.ps1` names) and test each
-   for existence. Extract every named skill and confirm `skills/<name>/SKILL.md` exists.
-   Extract every named agent and confirm `agents/<name>.md` exists.
+   for existence. Extract every named skill and confirm `.kiro/skills/<name>/SKILL.md` exists.
+   Extract every named agent and confirm `.kiro/agents/<name>.md` exists.
 3. Handoff versus loop log. The handoff's next-step mandate must not contradict the loop log's
    latest decisions. Any item the handoff marks pending that the loop log records as decided is
    a stale row. The handoff's stated active spec must match the most recent loop-log entry.
 4. Retro register. Every open row in `handoffs/RETRO.md` has an ID, a one-line description, and
    a status. Every retro ID the handoff or loop log cites exists in the register.
-5. Roster coherence. Every folder under `skills/` with a `SKILL.md` has a row in
-   `skills/README.md`, and every row resolves to a folder. Every `agents/<name>.md` has a row in
-   `agents/README.md`, and every row resolves to a file. Spot-check three rows for a description
-   that no longer matches the file's front matter.
+5. Roster coherence. Every folder under `.kiro/skills/` with a `SKILL.md` has a row in
+   `docs/skills-routing.md`, and every row resolves to a folder. Every `.kiro/agents/<name>.md`
+   has a row in `docs/agents-roster.md`, and every row resolves to a file. Spot-check three rows
+   for a description that no longer matches the file's front matter.
 6. Stale claims in the handoff. Any commit-state claim ("committed", "uncommitted", "pushed")
    is itself a FAIL row: the handoff describes work scope, not repository state. Dates or step labels older than the
    newest loop-log entry presented as current. A "currently X" claim about a file that the file
    contradicts.
-7. Steering pointers. Every path, skill name, and agent name cited inside `steering/` resolves.
+7. Steering pointers. Every path, skill name, and agent name cited inside `.kiro/steering/`
+   resolves.
 
 ## Hard rules
 

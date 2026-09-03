@@ -1,14 +1,13 @@
 ---
 name: agent-authoring
-description: How to create or edit a Kiro custom agent file (agents/<name>.md, installed to .kiro/agents/<name>.md). Covers the front matter field by field (name, description as the routing trigger, model, tools tags, excludedTools, allowedTools, permissions, resources, mcpServers), the body as system prompt (role line, operating rules, return spec), the blind-spawn protocol for critics, the minimal resources rule (skills it uses plus the method and data-boundary steering only), and the landing checklist (roster row, blind audit by instruction-auditor). Read before writing or editing any agent definition, choosing an agent's tools or model, or wiring a skill or steering file into an agent. The when-to-mint gate lives in agent-orchestration-workflows; shared description and body craft lives in skill-authoring. Keywords - agent file, custom agent, sub-agent, persona, front matter, system prompt, tools, resources, blind agent, roster.
+description: How to create or edit a Kiro custom agent file (.kiro/agents/<name>.md). Covers the front matter field by field (name, description as the routing trigger, model, tools tags, excludedTools, allowedTools, permissions, resources, mcpServers), the body as system prompt (role line, operating rules, return spec), the blind-spawn protocol for critics, the minimal resources rule (skills it uses plus the method and data-boundary steering only), and the landing checklist (roster row, blind audit by instruction-auditor). Read before writing or editing any agent definition, choosing an agent's tools or model, or wiring a skill or steering file into an agent. The when-to-mint gate lives in agent-orchestration-workflows; shared description and body craft lives in skill-authoring. Keywords - agent file, custom agent, sub-agent, persona, front matter, system prompt, tools, resources, blind agent, roster.
 ---
 
 # Agent Authoring Guide
 
-An agent file is `agents/<name>.md`. `scripts/install-kiro.ps1` copies it to
-`.kiro/agents/<name>.md`, where Kiro reads it. The file is YAML front matter plus a body. The
-body becomes the agent's system prompt when it runs. A skill is instructions any reader loads on
-demand; an agent is a role with its own tool grants and a clean context.
+An agent file is `.kiro/agents/<name>.md`, where Kiro reads it. The file is YAML front matter
+plus a body. The body becomes the agent's system prompt when it runs. A skill is instructions
+any reader loads on demand; an agent is a role with its own tool grants and a clean context.
 
 A sub-agent is the same file. An orchestrator whose `tools` include `subagent` invokes it.
 Sub-agents run in parallel with isolated context. They see steering only through their
@@ -65,7 +64,7 @@ Write to the agent in second person, imperative. It reads the body as its identi
    was verified with the witnessed command, what did not get done.
 
 Do not restate steering in the body. Steering the agent needs goes in `resources`; the body
-points to it in one line ("Follow `steering/20-method.md`.").
+points to it in one line ("Follow `.kiro/steering/20-method.md`.").
 
 ## The blind-spawn protocol
 
@@ -88,8 +87,8 @@ the critic more context; resolve it by fixing the artifact or the goal statement
 An agent receives no steering unless `resources` lists it. List exactly:
 
 - `skill://<name>` for each skill the body tells the agent to execute.
-- `file://steering/20-method.md` (backwards design, judge first).
-- `file://steering/40-data-boundary.md` (what may enter the IDE).
+- `file://.kiro/steering/20-method.md` (backwards design, judge first).
+- `file://.kiro/steering/40-data-boundary.md` (what may enter the IDE).
 
 Never list the whole steering folder. The opener and operator-profile files are for the primary
 session; they cost context on every spawn and change nothing the sub-agent does. Add another
@@ -108,20 +107,19 @@ description: Bounded builder. Implements ONE task from an active spec and return
 tools: [read, write, shell]
 resources:
   - skill://backwards-design
-  - file://steering/20-method.md
-  - file://steering/40-data-boundary.md
+  - file://.kiro/steering/20-method.md
+  - file://.kiro/steering/40-data-boundary.md
 ---
 ```
 
 ## Landing checklist
 
-- [ ] Roster row added to `agents/README.md`. Capability facts (tools, model, spawn protocol)
+- [ ] Roster row added to `docs/agents-roster.md`. Capability facts (tools, model, spawn protocol)
       match the file exactly. A divergence between row and file is drift.
 - [ ] Blind audit before commit: spawn `instruction-auditor` over the new or edited file with
       the file and the goal only. The author does not audit their own agent.
 - [ ] Coherence check passed: body rules against `tools`, body inputs against `resources`.
 - [ ] `resources` holds the skills used plus the two steering files, nothing else.
-- [ ] `scripts/install-kiro.ps1` run; `.kiro/agents/<name>.md` matches the source.
 - [ ] Every cited path resolves on disk. Markdown lint clean (`common-pitfalls`).
 - [ ] Invocation confirmed once from the Kiro agent picker and from an orchestrator with
       `subagent`.

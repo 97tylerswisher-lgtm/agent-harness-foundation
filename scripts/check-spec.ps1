@@ -21,8 +21,8 @@ Purpose
      listed), and at least one task is the human gate.
   5  cards/schema-card.md, cards/edge-case-catalog.md, cards/interface-card.md, and at least
      one file under fixtures/ exist.
-  6  No line in any file under the spec folder contains a term from banned-terms.txt at the
-     repo root (literal, case-sensitive; same rules as check-redaction.ps1).
+  6  No line in any file under the spec folder contains a term from scripts/banned-terms.txt
+     (literal, case-sensitive; same rules as check-redaction.ps1).
 
   Phase
   A "Phase: <value>" line in the first ten lines of goal-contract.md says how far the spec has
@@ -385,9 +385,9 @@ if ($missingCards.Count -eq 0) {
 # ---------------------------------------------------------------------------
 # Check 6: banned terms
 # ---------------------------------------------------------------------------
-$termsFile = Join-Path $repoRoot 'banned-terms.txt'
+$termsFile = Join-Path $repoRoot 'scripts\banned-terms.txt'
 if (-not (Test-Path -LiteralPath $termsFile -PathType Leaf)) {
-    Write-Fail 6 'banned-terms.txt' ('not found at ' + $termsFile)
+    Write-Fail 6 'scripts/banned-terms.txt' ('not found at ' + $termsFile)
 } else {
     $terms = @()
     foreach ($raw in (Read-Lines $termsFile)) {
@@ -413,7 +413,7 @@ if (-not (Test-Path -LiteralPath $termsFile -PathType Leaf)) {
         }
     }
     if ($terms.Count -eq 0) {
-        Write-Fail 6 'banned-terms.txt' 'lists no terms'
+        Write-Fail 6 'scripts/banned-terms.txt' 'lists no terms'
     } elseif ($hits.Count -eq 0) {
         Write-Ok 6 'spec folder' ($files.Count.ToString() + ' file(s) scanned against ' + $terms.Count + ' terms, no hit')
     } else {

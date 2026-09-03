@@ -1,7 +1,6 @@
 # Skills routing table
 
-Each skill lives at `skills/<name>/SKILL.md` (source of truth). `scripts/install-kiro.ps1`
-copies the tree to `.kiro/skills/`. Kiro loads every `name` and `description` at startup and
+Each skill lives at `.kiro/skills/<name>/SKILL.md`. Kiro loads every `name` and `description` at startup and
 loads a body only when the description matches the task or the operator types `/<name>`.
 
 This table is the single roster. When you add or change a skill, update its row here and

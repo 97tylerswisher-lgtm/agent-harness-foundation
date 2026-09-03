@@ -32,7 +32,7 @@ non-empty. Each field maps to a real failure it prevents.
 | 2 | Done-when | Numbered declarative success criteria, each verified against an artifact, not a report | Partial work declared finished | `spec-authoring` (EARS requirements) |
 | 3 | Minimum inputs | Each input and its cheapest source: a file, a line of code, an LLM call, or a sub-agent, in that order | Bloated context; dumping whole upstream outputs | `backwards-design` |
 | 4 | Roles and tiers | The sub-agents or roles, the model tier for each, and the delegation checklist each worker echoes back | Wrong-tier workers; ad-hoc orchestration | `agent-orchestration-workflows` |
-| 5 | Do-not-touch | The scope fence: the data boundary in `steering/40-data-boundary.md`, the spec's human gate, and anything the operator listed | Goal drift into forbidden surfaces or past the human gate | Steering plus the operator |
+| 5 | Do-not-touch | The scope fence: the data boundary in `.kiro/steering/40-data-boundary.md`, the spec's human gate, and anything the operator listed | Goal drift into forbidden surfaces or past the human gate | Steering plus the operator |
 | 6 | Verification | The artifacts that prove success, and where run state lands at the closing checkpoint | An unverifiable "done"; a lost handoff | `context-checkpoint` |
 
 Field-to-failure check, said while filling the contract: no judge means the run grades its own
@@ -112,7 +112,7 @@ script that checks page count and the presence of every required section).
 Step 3. Done-when: (1) `run-report.ps1` produces a PDF from the synthetic fixture; (2) the
 section check passes; (3) the operator signs off one review. Roles: one code-worker at the
 default tier; one fresh-eye critic to blind-check the PDF. Do-not-touch: real export files never
-enter the IDE (`steering/40-data-boundary.md`); the human PDF review in the spec's design is
+enter the IDE (`.kiro/steering/40-data-boundary.md`); the human PDF review in the spec's design is
 never automated; the trend chart is out of scope until the operator decides.
 
 Gate: the proxy check is uncalibrated, so it annotates and the human review gates. One open

@@ -34,7 +34,7 @@ classification judge for anything that might be real data.
 ## 5. Do-not-touch
 
 Real export files, the real `reshape.xlsm`, the real `make_report.m`, and any rig, program, or
-part identifier: none enters the IDE or the repo (`steering/40-data-boundary.md`). The human
+part identifier: none enters the IDE or the repo (`.kiro/steering/40-data-boundary.md`). The human
 PDF review is the gate. No step after it (filing, mailing, sign-off) is automated.
 
 ## 6. Verification

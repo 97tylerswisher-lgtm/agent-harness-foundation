@@ -144,7 +144,7 @@ Symptom: `File ...ps1 cannot be loaded because running scripts is disabled on th
 Fix: bypass the policy for that one invocation:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\install-kiro.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\check-redaction.ps1
 ```
 
 `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` also works when group policy allows it.

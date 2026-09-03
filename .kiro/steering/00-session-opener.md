@@ -18,9 +18,8 @@ says, in order. Do not skip a step because it looks obvious.
    the current task needs.
 4. Skills load on demand. Each skill has a description that says when to use it. Load a
    skill before the work it governs, not from memory. The routing table is
-   `skills/README.md` at the repo root (it is not mirrored under `.kiro/`); the installed
-   skill copies Kiro reads live under `.kiro/skills/`. The agent roster and the standing
-   worker contract are `agents/README.md`, also root only.
+   `docs/skills-routing.md`. The agent roster and the standing worker contract are
+   `docs/agents-roster.md`.
 
 Live handoff:
 

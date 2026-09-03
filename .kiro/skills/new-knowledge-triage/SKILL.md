@@ -64,12 +64,12 @@ The first failing gate ends the item. Record the gate that ended it.
   gate that produces `discard`.
 - Gate 1, domain. Does it change how the orchestrator or its agents work (scaffolding), or the
   project's subject-matter work? Subject-matter items leave this skill as described above.
-- Gate 2, anchor. Name the on-disk thing it would change: a file under `skills/`, `steering/`,
-  or `agents/`, or an observed friction (an open row in `handoffs/RETRO.md`, a repeated entry
-  in `handoffs/LOOP_LOG.md`). No nameable anchor ends with `archive(no-anchor)`.
+- Gate 2, anchor. Name the on-disk thing it would change: a file under `.kiro/skills/`,
+  `.kiro/steering/`, or `.kiro/agents/`, or an observed friction (an open row in
+  `handoffs/RETRO.md`, a repeated entry in `handoffs/LOOP_LOG.md`). No nameable anchor ends with `archive(no-anchor)`.
 - Gate 3, novelty. Scan the full skills catalog before claiming a gap: every `description` in
-  `skills/*/SKILL.md`, the bodies of plausible matches, `steering/*.md`, then `handoffs/RETRO.md`
-  for a prior defer or reject. A hit ends with
+  `.kiro/skills/*/SKILL.md`, the bodies of plausible matches, `.kiro/steering/*.md`, then
+  `handoffs/RETRO.md` for a prior defer or reject. A hit ends with
   `archive(already-practiced | already-rejected | weaker-than-existing)` naming where. A sharper
   formulation of something half-done is new and becomes an edit candidate.
 - Gate 4, class. Which asset absorbs it (table below). Merge over create: an edit to an existing
@@ -100,9 +100,9 @@ and the item re-enters at Gate 6. It never goes straight to an edit or a commiss
 
 | The knowledge is | Lands in |
 | --- | --- |
-| a procedure that runs when a trigger fires | `skills/<name>/SKILL.md`, edit first, new second |
-| a standing rule for every session | `steering/*.md`, within the 32 KB budget |
-| a reusable worker role | `agents/<name>.md` via `agent-authoring`, critiqued blind first |
+| a procedure that runs when a trigger fires | `.kiro/skills/<name>/SKILL.md`, edit first, new second |
+| a standing rule for every session | `.kiro/steering/*.md`, within the 32 KB budget |
+| a reusable worker role | `.kiro/agents/<name>.md` via `agent-authoring`, critiqued blind first |
 | a repeating multi-agent shape | `agent-orchestration-workflows` references |
 | a session-boundary convention | the `handoffs/NEXT_AGENT_HANDOFF.md` skeleton |
 
@@ -113,9 +113,9 @@ These are the only legal outcomes.
 - `edit(<file>, <section>)`: a small surgical edit to an existing skill or steering file, made in
   this pass, marked `<!-- Absorbed: <source> - <grade> - <date> -->`. An edit without a named
   file and a one-line sketch is not a verdict.
-- `commission(<name>, <draft-path>)`: a new skill or agent. Draft it outside `skills/` and
-  `steering/`, open an `OPEN` row in `handoffs/RETRO.md` whose text reads "commission <name>:
-  drafted at <draft-path>, promotion pending", and promote only after a blind critique by a
+- `commission(<name>, <draft-path>)`: a new skill or agent. Draft it outside `.kiro/skills/` and
+  `.kiro/steering/`, open an `OPEN` row in `handoffs/RETRO.md` whose text reads "commission
+  <name>: drafted at <draft-path>, promotion pending", and promote only after a blind critique by a
   `skeptic` sub-agent. When the draft is promoted or dropped, set the row to `CLOSED` and add
   "promoted to <path>" or "dropped: <reason>" to its text.
 - `pilot(<host task>, <deciding observation>)`: run the claim once in a real upcoming task. Name

@@ -20,31 +20,31 @@ and reduced to what a fresh session needs. The worked example under
 2. Read the worked example end to end: `goal-contract.md`, the three cards, `requirements.md`,
    `design.md`, `tasks.md`. Do not run it on real data.
 3. Start the operator's first real project at the Intake step of the flow in
-   `steering/00-session-opener.md`: ask for the request, write the goal contract with the
+   `.kiro/steering/00-session-opener.md`: ask for the request, write the goal contract with the
    `goal-definition` skill, stop, and show it.
 
 ## State
 
 - Environment at work: not yet recorded.
 - Active spec: none. The worked example is a reference, not an active job.
-- Scripts: `install-kiro.ps1`, `check-redaction.ps1`, `distill-fixture.ps1`, `check-spec.ps1`
+- Scripts: `check-redaction.ps1`, `distill-fixture.ps1`, `check-spec.ps1`
   under `scripts/`; tested on the authoring machine, untested at work.
 
 ## Operating contract
 
-- The flow in `steering/00-session-opener.md` is the order of work. Intake before spec, spec
+- The flow in `.kiro/steering/00-session-opener.md` is the order of work. Intake before spec, spec
   before build, gate before anything public or irreversible.
-- Real data never enters the IDE (`steering/40-data-boundary.md`).
+- Real data never enters the IDE (`.kiro/steering/40-data-boundary.md`).
 - Decide and log; escalate only business, spend, time, and approach forks
   (`ask-operator-gate`).
 - Blind critic before relying on a plan or a result (`agent-orchestration-workflows`).
-- Edit `steering/`, `skills/`, `agents/` at the root and run `scripts/install-kiro.ps1`;
-  edit `.kiro/specs/` directly.
+- Edit steering, skills, agents, and specs under `.kiro/` directly. Nothing there is
+  generated.
 
 ## Pending operator asks
 
 1. The first real project request, in the operator's own words.
-2. The site `banned-terms.txt` (program names, part numbers, project codes) before the first
+2. The site `scripts/banned-terms.txt` (program names, part numbers, project codes) before the first
    commit at work.
 
 ## Settled

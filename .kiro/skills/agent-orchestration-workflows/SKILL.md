@@ -10,7 +10,7 @@ half-remembered version drops the specifics that change the outcome.
 
 ## Vocabulary: what "spawn" means here
 
-Sub-agents are the files in `agents/<name>.md`, installed to `.kiro/agents/`. An orchestrator
+Sub-agents are the files in `.kiro/agents/<name>.md`. An orchestrator
 agent that lists `subagent` in its `tools` invokes them; "spawn a worker" means invoke one
 with a brief. Sub-agents run in parallel in isolated contexts and share steering only
 through their `resources`. Only the worker's final message returns.
@@ -53,7 +53,7 @@ verdict continues through rules 5 and 6, which shape the spawn, then picks its p
 the router below. Chart: `references/delegate-or-inline.flowchart.md`.
 
 0. Boundary check. Spend, destructive, public or external, or secret-touching work is never
-   resolved here. The escalation rules in `steering/` govern first.
+   resolved here. The escalation rules in `.kiro/steering/` govern first.
 1. Judgment, verification, or the fold? Do it yourself. Never delegate the plan, the
    decision, the audit of a worker's claims, or the decision-fold (the synthesis that drives
    a decision you own). Verification at volume is sampled: spot-check two or three raw items
@@ -65,10 +65,10 @@ the router below. Chart: `references/delegate-or-inline.flowchart.md`.
    inline (a spawn costs about 1k of your window plus latency and a retry risk). About 5k to
    20k: inline only if the decision needs the raw detail; spawn if a conclusion suffices.
    Over about 20k: always spawn. Executing a heavy skill body counts: spawn a worker whose
-   brief says "Read `skills/<name>/SKILL.md` first and follow it exactly. Inputs: ...
+   brief says "Read `.kiro/skills/<name>/SKILL.md` first and follow it exactly. Inputs: ...
    Return: <capped format>." Judgment-bearing procedures you own (the wrap itself) stay
    inline; delegate their mechanical phases.
-5. Spawn shape, who then how many. Roster first: if an `agents/<name>.md` description fits,
+5. Spawn shape, who then how many. Roster first: if an `.kiro/agents/<name>.md` description fits,
    spawn it by name. No fit: an inline brief on the closest generic role (`research-worker`
    for reading, `code-worker` for builds). A brief hand-written two or three times gets
    minted (`agent-authoring`). Then fan-out: the same read or process over three or more
@@ -85,8 +85,8 @@ Worker failure: respawn once with a tighter brief, then fall back inline and log
 in `handoffs/LOOP_LOG.md`. The numbers are calibration defaults; log a deviation and why.
 
 Maker is not checker, and that applies to you. Before committing your own inline edits to
-`steering/`, `skills/`, or `agents/`, spawn `instruction-auditor` over the touched files,
-unless a blind pass already covered them this session.
+`.kiro/steering/`, `.kiro/skills/`, or `.kiro/agents/`, spawn `instruction-auditor` over the
+touched files, unless a blind pass already covered them this session.
 
 ## The three failure modes
 
@@ -181,7 +181,7 @@ Folding: confirm, not rescue. The panel is a seatbelt, not the steering wheel.
 
 ## Model policy
 
-The operator profile (`steering/10-operator-profile.md`) names the models allowed at this
+The operator profile (`.kiro/steering/10-operator-profile.md`) names the models allowed at this
 site. Nothing below overrides that list.
 
 1. The orchestrator runs on the session model. It is the standing checker: it holds the
@@ -197,7 +197,7 @@ site. Nothing below overrides that list.
 ## Delegation prompt checklist
 
 The standing worker contract (echo the contract, lean return, no source-control writes, no
-paid calls, honest hiccups) lives once in `agents/README.md`. Reference it in the brief.
+paid calls, honest hiccups) lives once in `docs/agents-roster.md`. Reference it in the brief.
 Every brief must additionally contain:
 
 1. Role and the minimum context: paths, not pasted content. Workers read files themselves.
@@ -208,7 +208,7 @@ Every brief must additionally contain:
 5. For judged work: the rubric, written before generation, judged by a different agent.
 
 Gap-analysis rule: a "we do not have X" claim, from a worker or from you, must be preceded
-by a scan of the full `skills/` catalog and `scripts/` for an existing X. A mapper that
+by a scan of the full `.kiro/skills/` catalog and `scripts/` for an existing X. A mapper that
 inventories only the skills it was handed will miss what already ships. Put "scan the full
 catalog for each candidate gap" into any gap-analysis contract, and verify a load-bearing
 "missing" claim yourself before it binds a plan.

@@ -1,6 +1,6 @@
 # Agents
 
-Each file in this folder is one spawnable role: front matter (`name`, `description`, `tools`,
+Each file under `.kiro/agents/` is one spawnable role: front matter (`name`, `description`, `tools`,
 `resources`) plus a system prompt body. The description states when to use the role. The
 orchestrator picks a role from the roster below and hands it a numbered task contract. Blind
 roles receive only the artifact and the goal, never the orchestrator's reasoning.

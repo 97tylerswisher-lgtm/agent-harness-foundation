@@ -9,7 +9,7 @@ The model must write code that handles real file formats it never sees. It needs
 the data and never the values. This skill is the checklist that gets the shape into the IDE
 with nothing else attached. The operator is the judge of every item that enters.
 
-The rule lives in `steering/40-data-boundary.md`. This skill is the procedure. The script
+The rule lives in `.kiro/steering/40-data-boundary.md`. This skill is the procedure. The script
 `scripts/distill-fixture.ps1` is the knowable transform.
 
 ## When to use
@@ -56,7 +56,7 @@ produced. One "yes" means stop: the file does not enter until the item is remove
 5. Does it contain anything marked controlled, export-restricted, proprietary, or internal by
    the organization's policy?
 6. Does it contain a script body, a formula, or a query, rather than a signature?
-7. Does it contain a term listed in `banned-terms.txt`? Run `scripts/check-redaction.ps1`.
+7. Does it contain a term listed in `scripts/banned-terms.txt`? Run `scripts/check-redaction.ps1`.
 
 If unsure on any item, the answer is yes. Ask the person who owns the classification. The
 model never runs this checklist on the operator's behalf; it can only remind the operator to

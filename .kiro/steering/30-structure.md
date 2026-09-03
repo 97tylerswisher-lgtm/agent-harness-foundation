@@ -11,15 +11,15 @@ What lives where, and the rules that keep it that way.
 
 | Object | Where | What it is |
 | --- | --- | --- |
-| Steering | `steering/` (source), `.kiro/steering/` (installed) | always-on rules; one domain per file |
-| Skill | `skills/<name>/SKILL.md` (source), `.kiro/skills/` (installed) | one reusable procedure, loaded on demand by its description |
-| Agent | `agents/<name>.md` (source), `.kiro/agents/` (installed) | a spawnable role: system prompt, tools, resources |
+| Steering | `.kiro/steering/` | always-on rules; one domain per file |
+| Skill | `.kiro/skills/<name>/SKILL.md` | one reusable procedure, loaded on demand by its description |
+| Agent | `.kiro/agents/<name>.md` | a spawnable role: system prompt, tools, resources |
 | Spec | `.kiro/specs/<name>/` | one job's contract: goal contract, requirements, design, tasks, cards, fixtures |
 | Handoff | `handoffs/` | the rolling state between sessions: handoff, loop log, retro register |
 | Script | `scripts/*.ps1` | optional helpers; the markdown works without them |
 
-`scripts/install-kiro.ps1` copies the three source folders under `.kiro/`. Edit the source
-folders, run the script, commit both. `.kiro/specs/` is never generated; edit it directly.
+Edit every object under `.kiro/` directly. Nothing there is generated. The skills routing
+table is `docs/skills-routing.md`; the agents roster is `docs/agents-roster.md`.
 
 ## When to make one
 

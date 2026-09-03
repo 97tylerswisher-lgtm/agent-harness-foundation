@@ -1,6 +1,6 @@
 # Spawn-strategy router: which workflow pattern the spawn gets
 
-Source of truth: `skills/agent-orchestration-workflows/SKILL.md` (The seven workflow
+Source of truth: `.kiro/skills/agent-orchestration-workflows/SKILL.md` (The seven workflow
 patterns). This chart restates it; the source binds.
 
 ```mermaid

@@ -2,12 +2,11 @@
 check-redaction.ps1
 
 Purpose
-  Scan every file in the repo for the literal terms listed in banned-terms.txt at the repo
-  root. Run it before every push. The public copy ships an extraction list; the work repo
+  Scan every file in the repo for the literal terms listed in scripts/banned-terms.txt. Run it before every push. The public copy ships an extraction list; the work repo
   replaces the list with its own (program names, part numbers, project codes).
 
   Matching is case-sensitive and literal (no wildcards). Blank lines and lines starting with
-  '#' in banned-terms.txt are ignored. The scan skips .git/, banned-terms.txt itself, and files
+  '#' in scripts/banned-terms.txt are ignored. The scan skips .git/, the terms file itself, and files
   with the extensions png, jpg, pdf, xlsx, xlsm, zip.
 
 Usage
@@ -20,7 +19,7 @@ Usage
 Exit codes
   0  no hits.
   1  at least one hit.
-  2  banned-terms.txt is missing or lists no terms.
+  2  scripts/banned-terms.txt is missing or lists no terms.
 #>
 [CmdletBinding()]
 param(
@@ -38,9 +37,9 @@ if (-not (Test-Path -LiteralPath $Root -PathType Container)) {
     exit 2
 }
 $rootPath = (Resolve-Path -LiteralPath $Root).Path
-$termsFile = Join-Path $rootPath 'banned-terms.txt'
+$termsFile = Join-Path $rootPath 'scripts\banned-terms.txt'
 if (-not (Test-Path -LiteralPath $termsFile -PathType Leaf)) {
-    Write-Output "check-redaction: banned-terms.txt not found under $rootPath"
+    Write-Output "check-redaction: scripts\banned-terms.txt not found under $rootPath"
     exit 2
 }
 
@@ -52,7 +51,7 @@ foreach ($raw in [System.IO.File]::ReadAllLines($termsFile)) {
     $terms += $t
 }
 if ($terms.Count -eq 0) {
-    Write-Output "check-redaction: banned-terms.txt lists no terms"
+    Write-Output "check-redaction: scripts\banned-terms.txt lists no terms"
     exit 2
 }
 
@@ -65,7 +64,7 @@ $files = @(Get-ChildItem -LiteralPath $rootPath -Recurse -File -Force)
 foreach ($file in $files) {
     $rel = $file.FullName.Substring($rootPath.Length).TrimStart('\')
     if ($rel.StartsWith('.git\', $ordinal)) { continue }
-    if ($rel -eq 'banned-terms.txt') { continue }
+    if ($rel -eq 'scripts\banned-terms.txt') { continue }
     if ($skipExtensions -contains $file.Extension.ToLowerInvariant()) { continue }
     $filesScanned++
     $lines = [System.IO.File]::ReadAllLines($file.FullName)

@@ -55,7 +55,7 @@ can answer the question. Never call a paid research API; the operator owns spend
 
 ### Local first
 
-1. Search `skills/*/SKILL.md` and any `references/` folder beside a skill or spec.
+1. Search `.kiro/skills/*/SKILL.md` and any `references/` folder beside a skill or spec.
 2. Search `handoffs/RETRO.md` and `handoffs/LOOP_LOG.md` for a prior answer.
 3. Read the active spec's `design.md` and its `cards/` folder if present.
 
@@ -84,7 +84,7 @@ disk before you use it.
    skill or spec that needs them. Give the file a descriptive name and a one-line header that
    states the source and date.
 4. If the research yields a reusable procedure, write a new skill under
-   `skills/<name>/SKILL.md` per the `skill-authoring` skill.
+   `.kiro/skills/<name>/SKILL.md` per the `skill-authoring` skill.
 5. List the written files in the wrap summary so the next session finds them.
 
 Never re-research a fact that already has a file. If the file looks stale, update it and note

@@ -1,39 +1,24 @@
 # scripts
 
-Four Windows PowerShell 5.1 scripts. No modules, no Node, no extensions. Each prints plain
+Three Windows PowerShell 5.1 scripts. No modules, no Node, no extensions. Each prints plain
 lines and returns an exit code. Run any of them as
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\<name>.ps1`.
 
 The scripts are optional. The steering, skills, agents, and handoff files are plain markdown
-and work without them: a clone with a committed `.kiro/` folder is complete as is. The
-scripts remove manual copying, manual grepping, and manual fixture writing; they add no
-behavior the markdown depends on.
-
-## install-kiro.ps1
-
-Mirrors the harness-neutral source folders into the folders the Kiro IDE reads:
-`steering/*.md` to `.kiro/steering/`, `skills/**` to `.kiro/skills/`, and `agents/*.md` to
-`.kiro/agents/`. A file removed from a source folder is removed from its mirror. The script
-never touches `.kiro/specs/` or `.kiro/settings/`. Running it twice copies nothing the
-second time. `-Check` compares instead of copying and prints each path that differs, is
-missing, or is extra. `-Root <path>` targets another repo.
-
-Usage: `scripts\install-kiro.ps1 [-Check] [-Root <repo path>]`
-
-Exit codes: 0 mirror up to date or no differences; 1 `-Check` found a difference; 2 the
-repo root could not be resolved.
+and work without them. The scripts remove manual grepping and manual fixture writing; they
+add no behavior the markdown depends on.
 
 ## check-redaction.ps1
 
 Scans every file under the repo for the literal, case-sensitive terms listed in
-`banned-terms.txt` at the repo root and prints each hit as `path:line: term`. Blank lines and
-`#` comment lines in the list are ignored. The scan skips `.git/`, `banned-terms.txt` itself,
+`scripts/banned-terms.txt` and prints each hit as `path:line: term`. Blank lines and
+`#` comment lines in the list are ignored. The scan skips `.git/`, `scripts/banned-terms.txt` itself,
 and files with the extensions png, jpg, pdf, xlsx, xlsm, zip. Run it before every commit. The
 work repo replaces the public list with its own.
 
 Usage: `scripts\check-redaction.ps1 [-Root <repo path>]`
 
-Exit codes: 0 no hits; 1 at least one hit; 2 `banned-terms.txt` missing or empty.
+Exit codes: 0 no hits; 1 at least one hit; 2 `scripts/banned-terms.txt` missing or empty.
 
 ## distill-fixture.ps1
 
@@ -62,7 +47,7 @@ is numbered in sequence and contains `THE SYSTEM SHALL` or `THE SESSION SHALL`; 
 has the seven skeleton sections in order; (4) every `_Requirements:_` citation in `tasks.md`
 resolves, every criterion is cited by a task (orphans are listed), every task has a citation
 line, and one task is the human gate; (5) the three cards and at least one fixture exist; (6)
-no line in the folder contains a term from `banned-terms.txt`. The script edits nothing.
+no line in the folder contains a term from `scripts/banned-terms.txt`. The script edits nothing.
 
 A `Phase:` line in the first ten lines of `goal-contract.md` says how far the spec has
 progressed, and a file that a later phase produces prints `PENDING` instead of `FAIL` while it

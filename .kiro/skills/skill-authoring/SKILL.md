@@ -1,6 +1,6 @@
 ---
 name: skill-authoring
-description: Rules for creating, structuring, and maintaining skills under skills/<name>/SKILL.md. Read BEFORE creating a new skill, editing any SKILL.md, writing or revising a front matter description, bundling reference files or helper scripts into a skill folder, or deciding whether to extend an existing skill or mint a new one (merge-over-create). Covers how Kiro loads skills, the naming and front matter limits, progressive disclosure limits, body style, path rules, proactive capture signals, the routing-table update rule, and the pre-publish quality checklist. Keywords - skill, SKILL.md, front matter, description, routing table, merge-over-create, references folder, scripts folder, progressive disclosure, capture a pattern.
+description: Rules for creating, structuring, and maintaining skills under .kiro/skills/<name>/SKILL.md. Read BEFORE creating a new skill, editing any SKILL.md, writing or revising a front matter description, bundling reference files or helper scripts into a skill folder, or deciding whether to extend an existing skill or mint a new one (merge-over-create). Covers how Kiro loads skills, the naming and front matter limits, progressive disclosure limits, body style, path rules, proactive capture signals, the routing-table update rule, and the pre-publish quality checklist. Keywords - skill, SKILL.md, front matter, description, routing table, merge-over-create, references folder, scripts folder, progressive disclosure, capture a pattern.
 ---
 
 # Skill authoring
@@ -11,13 +11,12 @@ Kiro loads each skill's `name` and `description` at startup. It loads the body o
 description matches the current task or the operator types `/<name>`. The description decides
 whether the skill is ever used at all.
 
-The source of truth is `skills/<name>/SKILL.md`. `scripts/install-kiro.ps1` copies it to
-`.kiro/skills/`; `-Check` reports drift between the two trees. Edit only the root copy.
+Each skill lives at `.kiro/skills/<name>/SKILL.md`, where Kiro reads it.
 
 ## Folder structure
 
 ```text
-skills/
+.kiro/skills/
   <skill-name>/
     SKILL.md          required, the procedure, under 500 lines
     scripts/          optional, bundled helper scripts
@@ -78,7 +77,7 @@ example: this file's own front matter.
   paths break the moment a repo is cloned or moved.
 - Every cited path must resolve on disk at authoring time, because no gate reads skill prose
   and a dead pointer fails nothing until an agent acts on it.
-- Cross-references use the skill name in backticks and point only at skills in `skills/`.
+- Cross-references use the skill name in backticks and point only at skills in `.kiro/skills/`.
 - Verify API-reference skills against live official docs at authoring time, because a skill
   written from model memory can ship a fabricated API surface. For any external API detail
   (model IDs, endpoints, parameters, prices): check each load-bearing claim, stamp each section
@@ -109,7 +108,7 @@ a topic an existing skill already covers.
 
 Before creating, run the merge check:
 
-1. Skim `skills/README.md` (the routing table) for overlap.
+1. Skim `docs/skills-routing.md` (the routing table) for overlap.
 2. Check the Related skills sections of the nearest candidates.
 3. Extend the existing skill unless the topic is genuinely new. A roster of few, deep skills
    routes better than many shallow ones.
@@ -136,9 +135,8 @@ row. The wrap step in `context-checkpoint` sweeps for anything missed mid-flight
 
 ## Context maintenance
 
-When you create or modify a skill, update `skills/README.md` (add or revise the routing row),
-then run `scripts/install-kiro.ps1` so `.kiro/skills/` matches. That README is the single
-roster; do not keep a skill list inside any skill, because duplicate rosters drift. When a task
+When you create or modify a skill, update `docs/skills-routing.md` (add or revise the routing
+row). That file is the single roster; do not keep a skill list inside any skill, because duplicate rosters drift. When a task
 reveals an undocumented subsystem, fix it inline: update the nearest README and prefer pointer
 comments over full rewrites.
 
@@ -155,9 +153,8 @@ Before publishing a skill:
 - [ ] Imperative voice; rules carry their why; examples labeled
 - [ ] Paths are relative and every cited path resolves on disk
 - [ ] Markdown lint clean (full rules in `common-pitfalls`)
-- [ ] Related skills rows point at skills that exist in `skills/`
-- [ ] Routing-table row added or updated in `skills/README.md`
-- [ ] `scripts/install-kiro.ps1 -Check` reports zero drift
+- [ ] Related skills rows point at skills that exist in `.kiro/skills/`
+- [ ] Routing-table row added or updated in `docs/skills-routing.md`
 
 ## Related skills
 

@@ -21,7 +21,7 @@
 ### Session 0 (assembly)
 
 - D0-1: Harness extracted from a prior project and laid out for Kiro. Steering, skills, and
-  agents are edited at the root and installed under `.kiro/` by `scripts/install-kiro.ps1`.
+  agents live under `.kiro/`, where Kiro reads them.
 - D0-2: Kiro specs are the only job contract. A prior seven-file step contract was dropped.
 - D0-3: One opener mechanism: steering pulls the live handoff with a file reference. No
   session hook, no manifest, no budget script.

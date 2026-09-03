@@ -40,7 +40,7 @@ Real project data never enters this IDE. This rule has no exceptions and no over
    `scripts/distill-fixture.ps1` is the shape-extraction tool for that; see
    `data-distillation`.
 4. Before every commit, `scripts/check-redaction.ps1` must pass. At work, replace
-   `banned-terms.txt` with the site list. The list is a backstop, not the rule.
+   `scripts/banned-terms.txt` with the site list. The list is a backstop, not the rule.
 
 ## Why this is written for you
 

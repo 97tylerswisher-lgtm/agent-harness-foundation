@@ -31,7 +31,7 @@ whether the proxy is calibrated (gates) or not (annotates only). Cover fit and c
 
 ## 5. Do-not-touch
 
-- Real project data never enters the IDE (`steering/40-data-boundary.md`).
+- Real project data never enters the IDE (`.kiro/steering/40-data-boundary.md`).
 - <The human gate this job stops at.>
 - <Anything the operator listed.>
 
