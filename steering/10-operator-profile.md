@@ -41,5 +41,8 @@ this file to use the harness with a different operator.
 - He is a structural analysis engineer. The projects are engineering automations: data files
   in, existing scripts run, reports out, a person reviews the result.
 - Real project data is controlled and never enters this IDE. See `40-data-boundary.md`.
-- The IDE runs an approved model without extension installs. Scripts are PowerShell. Source
-  control is GitLab at work.
+- The IDE offers two approved models and nothing else: Claude Opus 4.6 for the session,
+  every critic, every judge, and any build that needs judgment; Claude Sonnet 4.6 only for
+  mechanical work (a mapper, a format sweep, a copy). Never assign any other model, and when
+  in doubt use Opus 4.6. Agent files leave `model` unset so they inherit the session's model.
+- No extension installs. Scripts are PowerShell. Source control is GitLab at work.

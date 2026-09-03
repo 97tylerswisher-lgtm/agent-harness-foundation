@@ -181,13 +181,16 @@ Folding: confirm, not rescue. The panel is a seatbelt, not the steering wheel.
 
 ## Model policy
 
+The operator profile (`steering/10-operator-profile.md`) names the models allowed at this
+site. Nothing below overrides that list.
+
 1. The orchestrator runs on the session model. It is the standing checker: it holds the
    high-level goal and never tunnels on one fix while others regress.
 2. Delegated builders inherit the session model. Omit a model pin in briefs and agent files.
 3. Blind critics and skeptics run the strongest tier available. Finding what is actually
    wrong is the hardest job; never downgrade it.
-4. Mechanical sweeps (structure checks, lints, enumerations) may take a cheaper tier when
-   one exists. Never hardcode a model name into a skill.
+4. Mechanical sweeps (structure checks, lints, enumerations) may take the site's approved
+   lower tier when one exists; never a model outside the operator profile's list.
 5. If the harness offers one model, every rule above resolves to it. Say so and move on. The
    blind and maker-is-not-checker rules still apply: they separate contexts, not models.
 
