@@ -4,7 +4,7 @@
     {
       "name": "Check every spec after a task",
       "description": "Runs scripts/check-spec.ps1 -All when a spec task finishes. Exit 0 puts the check lines in the agent's context; exit 1 sends the FAIL lines back to the agent.",
-      "trigger": "PostTaskExecution",
+      "trigger": "PostTaskExec",
       "timeout": 60,
       "action": {
         "type": "command",
@@ -14,7 +14,7 @@
     {
       "name": "Redaction check when the agent stops",
       "description": "Runs scripts/check-redaction.ps1 over the repo when the agent stops. Exit 1 sends each banned-term hit back to the agent.",
-      "trigger": "AgentStop",
+      "trigger": "Stop",
       "timeout": 60,
       "action": {
         "type": "command",

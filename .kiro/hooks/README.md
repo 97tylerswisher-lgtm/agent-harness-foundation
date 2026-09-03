@@ -10,8 +10,8 @@ Neither hook costs credits.
 
 | Hook | Trigger | Command | Effect |
 | --- | --- | --- | --- |
-| Check every spec after a task | `PostTaskExecution` | `scripts/check-spec.ps1 -All` | every folder under `.kiro/specs/` is checked when a spec task finishes; a `FAIL` line reaches the agent |
-| Redaction check when the agent stops | `AgentStop` | `scripts/check-redaction.ps1` | the repo is scanned for `scripts/banned-terms.txt` terms when the agent stops; each hit reaches the agent |
+| Check every spec after a task | `PostTaskExec` | `scripts/check-spec.ps1 -All` | every folder under `.kiro/specs/` is checked when a spec task finishes; a `FAIL` line reaches the agent |
+| Redaction check when the agent stops | `Stop` | `scripts/check-redaction.ps1` | the repo is scanned for `scripts/banned-terms.txt` terms when the agent stops; each hit reaches the agent |
 
 The hooks make the two checks mechanical. The steering still tells the agent to run the
 scripts by hand; the hooks remove the case where it forgets.
@@ -28,7 +28,7 @@ scripts by hand; the hooks remove the case where it forgets.
 The trigger names follow the Kiro 1.0 hooks docs (`https://kiro.dev/docs/hooks/types/`).
 Kiro 0.x used `.kiro.hook` files with a different format; 1.0 shows those with a legacy badge.
 Open the IDE's hook panel once after cloning and confirm that both hooks load without a
-format warning and that `PostTaskExecution` and `AgentStop` appear in its trigger list. If a
+format warning and that `PostTaskExec` and `Stop` appear in its trigger list. If a
 name differs, change the `trigger` value in `harness-checks.json` to the panel's spelling.
 
 ## Disable a hook
@@ -39,7 +39,7 @@ Add `"enabled": false` to that hook's object in `harness-checks.json`:
 {
   "name": "Redaction check when the agent stops",
   "enabled": false,
-  "trigger": "AgentStop",
+  "trigger": "Stop",
   "action": { "type": "command", "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-redaction.ps1" }
 }
 ```

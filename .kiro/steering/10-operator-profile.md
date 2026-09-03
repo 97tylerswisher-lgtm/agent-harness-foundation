@@ -45,4 +45,5 @@ this file to use the harness with a different operator.
   every critic, every judge, and any build that needs judgment; Claude Sonnet 4.6 only for
   mechanical work (a mapper, a format sweep, a copy). Never assign any other model, and when
   in doubt use Opus 4.6. Agent files leave `model` unset so they inherit the session's model.
+  Never select Kiro's `Auto` model setting; it routes outside the approved list.
 - No extension installs. Scripts are PowerShell. Source control is GitLab at work.

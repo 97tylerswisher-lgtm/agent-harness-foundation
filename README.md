@@ -79,6 +79,19 @@ Edit steering, skills, agents, and specs under `.kiro/` directly. Nothing there 
 The two hooks in `.kiro/hooks/` make the spec and redaction checks mechanical inside Kiro;
 `.kiro/hooks/README.md` says when they run and how to disable one.
 
+## Reuse across projects
+
+Default: clone this repo as the project, or copy `.kiro/`, `handoffs/`, `scripts/`, `AGENTS.md`,
+and `NOTICE` into an existing project. Each project keeps its own specs, handoffs, and memory.
+
+Global option: Kiro merges `~/.kiro/steering`, `~/.kiro/skills`, `~/.kiro/agents`, and
+`~/.kiro/hooks` into every workspace, so the skills, agents, hooks, and the method, structure,
+data-boundary, and Ponytail steering files can live there once. Keep `00-session-opener.md`
+and `10-operator-profile.md` in each project's `.kiro/steering/`: the opener pulls
+`handoffs/NEXT_AGENT_HANDOFF.md` and `handoffs/memory/INDEX.md` by workspace-relative path, which
+is not documented for global steering, and a global agent's `file://` resources resolve against
+the agent file's own folder. Specs are workspace-only either way.
+
 ## The worked example
 
 `.kiro/specs/text-to-vba-to-matlab-to-pdf/` walks the flow once on a synthetic job: delimited
