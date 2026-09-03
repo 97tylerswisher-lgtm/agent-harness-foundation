@@ -57,6 +57,9 @@ example: this file's own front matter.
   jump instead of reading linearly.
 - Turn repeated helper code into a script in the skill's `scripts/` folder, referenced from the
   body, not a code block the agent re-types each use.
+- Split a procedure over about eight steps into numbered step sections or files, and tick each
+  step in `handoffs/LOOP_LOG.md` as it runs (`<procedure> step N done`), because a long unbroken
+  list gets skimmed and a step gets skipped.
 - Remove sections that do not change an agent's actions. Ask on every update; if the answer
   is nothing, delete the section.
 

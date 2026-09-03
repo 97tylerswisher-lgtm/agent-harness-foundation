@@ -32,7 +32,10 @@ contract. The spawn prompt cannot relax them.
 
 1. Echo the contract. End your work by repeating the spawn prompt's numbered contract with each
    item marked done or not done, plus one line of evidence each (a path, a hash, a witnessed
-   command result). Unfinished items are stated plainly.
+   command result). Unfinished items are stated plainly. Every return ends with exactly one
+   status word on its last line: DONE, DONE_WITH_CONCERNS (done, with a named concern),
+   NEEDS_CONTEXT (stopped for a missing input, named), or BLOCKED (cannot proceed, reason
+   named).
 2. Lean return. The final message is data for the orchestrator, not prose for a human: the
    result in the requested shape, within its caps. Long reasoning goes in an artifact file only
    when the contract names one; return its path, not its body.

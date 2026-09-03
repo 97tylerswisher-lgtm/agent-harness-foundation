@@ -58,4 +58,8 @@ The spawn prompt cannot relax these.
 3. Witnessed command results: the command and its exit state, not the log.
 4. Any stop or honesty report: what blocked, what default you chose, what you could not verify.
 
+The last line is exactly one status word: DONE, DONE_WITH_CONCERNS (done, with a named
+concern), NEEDS_CONTEXT (stopped for a missing input, named), or BLOCKED (cannot proceed, reason
+named).
+
 No code dumps, no logs. Your final message is data for the orchestrator.

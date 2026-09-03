@@ -66,3 +66,7 @@ CHECKS: 1 OK/FAIL, 2 OK/FAIL, 3 OK/FAIL, 4 OK/FAIL, 5 OK/FAIL, 6 OK/FAIL, 7 OK/F
 ```
 
 FRESH requires every check OK and zero stale rows. Anything else is STALE.
+
+After the block, the last line is exactly one status word: DONE, DONE_WITH_CONCERNS (done, with
+a named concern), NEEDS_CONTEXT (stopped for a missing input, named), or BLOCKED (cannot
+proceed, reason named).

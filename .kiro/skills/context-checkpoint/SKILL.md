@@ -34,7 +34,10 @@ Settled section and the loop-log archive. If the decision is there, it is closed
 
 ## The wrap
 
-Run the steps in this order. Do not skip a step because the session was short.
+Run the steps as a strict sequence. Read one step, do it, write `wrap step N done` as the last
+line of the session block in `handoffs/LOOP_LOG.md` (the live block before step 4, the archived
+block after it), then open the next step. Never skip ahead, and never run two steps from memory:
+a missing tick is a skipped step. Do not skip a step because the session was short.
 
 1. Fold the loop log into `handoffs/NEXT_AGENT_HANDOFF.md`. Overwrite the file using this fixed
    section skeleton; never stack a dated block on top of the old text:

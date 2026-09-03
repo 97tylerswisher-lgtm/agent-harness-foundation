@@ -102,82 +102,20 @@ touched files, unless a blind pass already covered them this session.
 Verification rule: judge a worker by its artifact, not its report. A final message can be
 truncated while the file is complete, and a confident "done" can sit over a missing file.
 
-## The seven workflow patterns
+## Workflow patterns
 
-Route by the question the spawn must answer. Chart:
-`references/spawn-strategy-router.flowchart.md`. Numbers are the names briefs use.
+Seven patterns, one per question the spawn must answer, with their costs and the pairing rule.
+Read `references/patterns.md` before choosing a pattern.
 
-| You need | Pattern | Why it wins | Cost, and when it hurts |
-| --- | --- | --- | --- |
-| "What is this?" (task type unclear) | 1. Classify-and-act: a cheap router sends the task to a specialist | One router beats N wrong specialists; tiering cuts cost | Only when the classification is reliable; a misroute poisons everything after it |
-| "What exists?" (facts from many places) | 2. Fan-out readers (mapper-class); synthesizer only per rule 6 | Each reader's context is disposable; you absorb digests | N returns land in your window: cap each; the synthesizer is a failure surface; useless when items interact |
-| "Do this N times" (3+ similar items) | 2. Fan-out workers (rule 5 shape) | Parallel wall-clock; items cannot cross-contaminate | Parallel edits collide (isolate or serialize); code has fewer parallel-safe tasks than research |
-| "Is this real?" (confidence before acting) | 3. Adversarial verification: a separate verifier per producer against a rubric; a skeptic over the verifiers kills false positives | A maker grades itself kindly; refuters have no stake | A verifier that misses launders the claim; keep an "unverified" state and verify before folding |
-| "Give me options" (an open space) | 4. Generate-and-filter: overproduce, cull by rubric, dedupe, return survivors | Selection beats perfection | Rubric before generating or the filter is taste; best-of-N is the baseline any fancier shape must beat |
-| "Which is best?" (comparable candidates) | 5. Tournament: pairwise brackets | Pairwise holds where absolute scores are unstable across judges | N-1 pairs to pick one, about N log N to rank; try absolute 0-1 scoring first; incomparable candidates make every pair noise |
-| "Find them all" (unknown volume) | 6. Loop-until-done: passes until a stop condition holds | A fixed pass count always under- or over-shoots | Fails both ways (repetition, or a premature stop): stop on two no-progress rounds and a pass cap |
-| "Make this better" (one artifact, clear rubric) | 7. Evaluator-optimizer: maker, critic, revise, 1 to 3 rounds | Converges when the critic's feedback is usable | Loops forever without a closed rubric; maker is not checker; cap the rounds |
-
-Pairing: pick by the failure you fear, then pay that pattern's cost. False positives:
-adversarial verification behind any producer (fan-out plus refute-per-finding is the
-default). Missed items: wrap the run in loop-until-done. Picking wrong: a tournament after
-generate-and-filter. Unclear task type: classify-and-act in front. Two patterns is the
-normal pair; beyond two, write the sequence as an ordered task list before spawning. Prompt
-chaining (steps with a gate between) is the shape of one worker's contract, not a fan-out
-pattern. When nothing fits: one worker with a capped return, then reassess.
-
-The blind modifier applies to every row. When your own view could contaminate the result
+The blind modifier applies to every pattern. When your own view could contaminate the result
 (perceptual judgment of an artifact, critique of a plan, hunting what a draft missed), hand
 the worker only the artifact and the goal: never the reasoning, the defect list, or the
 expected answer. Divergence is the signal. Blind workers run the strongest tier available.
 
 ## The plan-critique panel
 
-Run this before building, on any non-trivial plan, design, or foundation. It is
-adversarial verification where lens diversity, not redundancy, is the point. One generalist
-`skeptic` with one brief leaves the goal and architecture lenses self-graded, which
-`system-self-inquiry` forbids.
-
-Lenses, one blind critic each:
-
-1. Goal-alignment (`goal-critic`): does the plan serve the goal at the right priority and
-   scope, or is it drift, a means mistaken for the end, or gold-plating? Rubric: the goal
-   contract and `goal-definition`.
-2. Architecture-coherence (`architecture-critic`): the right module boundary, or accreted
-   cruft, conflated axes, a category error? Rubric: `system-self-inquiry`.
-3. Mechanism (`mechanism-critic`): trace the real data path (source, transform, output).
-   Where does it leak or pass vacuously?
-4. Product or market (`skeptic` with a per-lens brief): who is the customer and what job do
-   they hire the output for? Stress-test the goal itself, not just the plan against it.
-
-Protocol:
-
-- Blind: each critic gets only the artifact, the goal, and its lens. Never your reasoning or
-  conclusion. Divergence is the signal.
-- Verify against artifacts: each critic checks claims on disk. This catches a stale premise.
-- Parallel: one barrier; fold all findings; reconcile divergences before committing.
-- Scale to task: mechanical edits skip the panel. A foundation artifact gets the three named
-  lenses together. Goal-shaping or axis work adds the product or market lens as a fourth. A
-  single small claim gets a lone `skeptic`. The soundness pass is the mechanism lens; do not
-  double it.
-- Sharpen each lens: brief in the premortem grammar ("assume the plan has already failed;
-  why?"). Require a forced verdict plus a 0 to 100 confidence. When folding, cluster
-  findings by root cause, then name the single highest-leverage fix.
-
-Folding: confirm, not rescue. The panel is a seatbelt, not the steering wheel.
-
-- Trace first. Before spawning, trace the real data path, boundary, and consumer yourself
-  and draft against that. If the panel's central catch is something a literal trace would
-  have surfaced, the miss was yours: fix the first-pass habit.
-- Verify every load-bearing claim against disk before folding. A blind critic is told to
-  find fault, so it returns findings regardless, some wrong or overstated. Read the cited
-  `file:line`; fold only what holds. Neither auto-accept the critic nor defend the draft.
-- Show what you rejected, not only what you accepted. Every fold reports the findings you
-  threw out and why. Rejecting nothing is the yes-man alarm.
-- Track the hit-rate across folds: true and load-bearing, false or overstated, cosmetic.
-  All true every time means a weak first draft; reject nothing means yes-man. The ratio
-  tells you which imbalance you have.
-- Delegate the check; keep the verify-and-fold.
+Three blind lenses plus an optional fourth, run in parallel on a foundation artifact before
+building. Read `references/panel.md` before spawning critics.
 
 ## Return caps by role
 

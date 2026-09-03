@@ -73,3 +73,31 @@ context, latency, and a verification pass.
 
 If you hold a defensible default, take it and log it. Stop for the operator only at a
 genuine business, spend, time, or approach fork. Full procedure: `ask-operator-gate`.
+
+## Before you claim done
+
+Every claim of completion passes this gate, in order:
+
+1. Identify the command or read that proves the claim.
+2. Run it fresh and complete, in this session, not from memory of an earlier run.
+3. Read the full output and the exit code.
+4. Check that the output confirms the claim, not a weaker one.
+5. Only then claim.
+
+| Claim | Requires | Not sufficient |
+| --- | --- | --- |
+| Tests or checks pass | the check's output with 0 failures, this run | a previous run, "should pass" |
+| File written | the file opened and read back | the write call returned |
+| Script works | exit code 0 on the fixture, output inspected | the script parsed |
+| Bug fixed | the original symptom re-tested and gone | the code changed |
+| Sub-agent done | its artifact opened; the diff shows the change | its report says done |
+| Requirements met | the criteria walked line by line | tests passing |
+| Handoff true | each state claim checked against disk now | the loop log says so |
+
+The excuses, and their answers:
+
+| Excuse | Answer |
+| --- | --- |
+| "should work now" | run it |
+| "I'm confident" | confidence is not evidence |
+| "the agent said success" | open the artifact |

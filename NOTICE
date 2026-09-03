@@ -3,3 +3,6 @@ MIT License, Copyright (c) Dietrich Gebert: steering/ponytail.md, steering/platf
 skills/ponytail/, skills/ponytail-review/, skills/ponytail-audit/, skills/ponytail-debt/, and their
 installed copies under .kiro/. The trimmed source they are refreshed from is
 https://github.com/97tylerswisher-lgtm/ponytail_kiro.
+The shape of the verification table in .kiro/steering/20-method.md ("Before you claim done") is
+adapted from obra/superpowers (https://github.com/obra/superpowers), MIT License, Copyright (c)
+Jesse Vincent.

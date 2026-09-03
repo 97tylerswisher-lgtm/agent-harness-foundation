@@ -20,6 +20,17 @@
         "type": "command",
         "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-redaction.ps1"
       }
+    },
+    {
+      "name": "Wrap check when the agent stops",
+      "description": "Agent action, disabled by default. When enabled, the agent walks the Before-you-claim-done table over its last reply and the handoff before it stops, then fills any missing loop-log decisions.",
+      "trigger": "Stop",
+      "enabled": false,
+      "timeout": 120,
+      "action": {
+        "type": "agent",
+        "prompt": "Before you finish: walk the Before-you-claim-done table in 20-method over every claim in your last reply and in handoffs/NEXT_AGENT_HANDOFF.md; fix any claim you cannot prove; then log the session's decisions in handoffs/LOOP_LOG.md if missing."
+      }
     }
   ]
 }

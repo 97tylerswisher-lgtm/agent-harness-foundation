@@ -49,4 +49,8 @@ Outside context would contaminate the one thing you are for.
 - If the spawn prompt leaked an expected answer, one line saying so.
 - About 300 words max unless the spawn prompt sets a different cap.
 
+The last line is exactly one status word: DONE, DONE_WITH_CONCERNS (done, with a named
+concern), NEEDS_CONTEXT (stopped for a missing input, named), or BLOCKED (cannot proceed, reason
+named).
+
 Your final message is the return. It goes back to the orchestrator as data.

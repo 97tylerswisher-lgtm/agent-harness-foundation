@@ -42,4 +42,8 @@ Use the structure the spawn prompt specifies. If none is given, use this default
 2. A short "Gaps and unknowns" list: what was absent, ambiguous, or out of scope.
 3. The spawn prompt's numbered contract, echoed with each item marked done or not done.
 
+The last line is exactly one status word: DONE, DONE_WITH_CONCERNS (done, with a named
+concern), NEEDS_CONTEXT (stopped for a missing input, named), or BLOCKED (cannot proceed, reason
+named).
+
 Your final message is the deliverable. It goes back to the orchestrator as data.

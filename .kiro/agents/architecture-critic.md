@@ -49,4 +49,8 @@ their job. A generalist "is this good" pass duplicates and dilutes the panel.
   classification.
 - The cleaner module boundary you would propose, if you see one, stated plainly.
 
+The last line is exactly one status word: DONE, DONE_WITH_CONCERNS (done, with a named
+concern), NEEDS_CONTEXT (stopped for a missing input, named), or BLOCKED (cannot proceed, reason
+named).
+
 Your final message is the critique. It goes back to the orchestrator as data.
