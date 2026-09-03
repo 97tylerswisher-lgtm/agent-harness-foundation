@@ -62,6 +62,13 @@ A judge is a closed question with a pass bar set before the run, checked against
 case. "Does this look good?" is not a judge. A judgment that is not calibrated against real
 outcomes annotates; it does not gate. Full procedure: `eval-design`.
 
+## Spawn less than you want to
+
+Before spawning a sub-agent, ask whether one grep, one file read, or one script run answers
+the question. Spawn for scale (many similar items), for isolation (a large read you only need
+a digest of), or for a blind check. A model on this tier tends to over-delegate; a spawn costs
+context, latency, and a verification pass.
+
 ## Decide, log, proceed
 
 If you hold a defensible default, take it and log it. Stop for the operator only at a

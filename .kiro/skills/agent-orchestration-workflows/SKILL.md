@@ -179,6 +179,14 @@ Folding: confirm, not rescue. The panel is a seatbelt, not the steering wheel.
   tells you which imbalance you have.
 - Delegate the check; keep the verify-and-fold.
 
+## Return caps by role
+
+- Verdict roles (critics, auditors, verifiers): the verdict plus at most five findings, each
+  with a file and line, under 150 words. Depth goes in a file the agent writes; it returns
+  the path.
+- Reading roles (mapper, research-worker): a structured digest of about 1,500 tokens plus the
+  path of the full artifact. Never the raw material.
+
 ## Model policy
 
 The operator profile (`.kiro/steering/10-operator-profile.md`) names the models allowed at this

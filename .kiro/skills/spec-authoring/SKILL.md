@@ -32,6 +32,13 @@ for what goes in and what comes out. A job with intermediate stages chains them 
 | `references/` | Optional. Research findings the spec depends on, one `<topic>.md` per finding | see `self-learning-research` |
 | `stubs/` | Optional. Stand-ins for existing scripts the runner calls, so the runner can be dry-run without them. Each stub folder carries a README that says what it stands in for | none |
 
+## Task size
+
+A task is under about one human-hour of work, fits one context window with the files it
+touches, and leaves one runnable check behind (an assert, a script exit code, a diff the
+operator can eyeball). Split anything larger. Name a check after the criterion it proves
+(`check_1_2` for criterion 1.2) so the trace from requirement to evidence is a grep.
+
 ## Rules
 
 1. One spec per job. A job with two judges is two specs.
