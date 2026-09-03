@@ -23,7 +23,7 @@ Optional: `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-red
 before every commit. `scripts/README.md` describes the four scripts. The markdown works without them.
 
 A companion repo, a trimmed fork of the Ponytail coding-style ruleset
-(`github.com/97tylerswisher-lgtm/ponytail`, branch `kiro`, published with this repo), adds a code-minimalism
+(`https://github.com/97tylerswisher-lgtm/ponytail_kiro`), adds a code-minimalism
 steering file and four skills. Clone it beside this one and copy its `.kiro/steering/` and
 `.kiro/skills/` entries in, or use it on its own.
 
